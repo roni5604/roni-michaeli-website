@@ -2,6 +2,9 @@
 
 Welcome to my personal portfolio website showcasing my projects and skills in Computer Science and Mathematics.
 
+https://ronimichaeli.vercel.app/
+https://roni5604.github.io/roni-michaeli-website/
+
 ## Features
 
 - **About Me:** Learn more about my background and interests.
