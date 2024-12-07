@@ -1,0 +1,46 @@
+<div class="row">
+    <!-- Project 1 -->
+    <div class="col-md-6 project-card">
+        <div class="card">
+            <img src="assets/images/drone_navigation.png" class="card-img-top" alt="Drone Navigation">
+            <div class="card-body">
+                <h5 class="card-title">Drone Navigation System</h5>
+                <p class="card-text">Developed an autonomous drone navigation system using computer vision and machine learning algorithms to enable obstacle detection and path planning.</p>
+                <a href="https://github.com/roni5604/Drone_Simulator_final_project" class="btn btn-primary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+    <!-- Project 2 -->
+    <div class="col-md-6 project-card">
+        <div class="card">
+            <img src="assets/images/face_recognition.jpg" class="card-img-top" alt="Face Recognition Machine">
+            <div class="card-body">
+                <h5 class="card-title">Face Recognition Machine</h5>
+                <p class="card-text">Implemented a face recognition system using deep learning techniques to accurately identify and verify individuals in real-time.</p>
+                <a href="https://github.com/roni5604/face_recognition_model" class="btn btn-primary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+    <!-- Project 3 -->
+    <div class="col-md-6 project-card">
+        <div class="card">
+            <img src="assets/images/voting_system.jpeg" class="card-img-top" alt="Voting System">
+            <div class="card-body">
+                <h5 class="card-title">Blockchain-Based Voting System</h5>
+                <p class="card-text">Designed a secure voting platform leveraging blockchain technology to ensure transparency and immutability of votes.</p>
+                <a href="https://github.com/roni5604/company-voting-system" class="btn btn-primary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+    <!-- Project 4 -->
+    <div class="col-md-6 project-card">
+        <div class="card">
+            <img src="assets/images/restaurant_website.jpeg" class="card-img-top" alt="Restaurant Website">
+            <div class="card-body">
+                <h5 class="card-title">Restaurant Website Development</h5>
+                <p class="card-text">Built a responsive and user-friendly website for a local restaurant, incorporating online reservations, menu displays, and customer reviews.</p>
+                <a href="https://github.com/roni5604/meatandcheese" class="btn btn-primary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>

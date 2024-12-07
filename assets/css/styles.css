@@ -1,0 +1,115 @@
+/* styles.css */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero Section */
+header {
+    position: relative;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* About Section */
+#about img {
+    max-width: 200px;
+}
+
+/* Projects Section */
+.project-card {
+    margin-bottom: 30px;
+}
+
+.project-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Contact Form */
+#contact-form button {
+    width: 100%;
+}
+
+/* Footer Icons */
+footer a:hover {
+    color: #0d6efd;
+}
+/* Custom Header Styling */
+.custom-header {
+    position: relative;
+}
+
+.custom-header .intro-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-header .circle-overlay {
+    width: 320px;
+    height: 320px;
+    background-color: #333;
+    z-index: 0;
+    top: 10px;
+    left: 10px;
+    opacity: 0.1;
+}
+
+.custom-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.custom-header p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.custom-header .btn-outline-dark {
+    border: 2px solid #333;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-header .btn-outline-dark:hover {
+    background-color: #333;
+    color: #fff;
+}
+#about img {
+    border: 5px solid #007bff; /* Border color matching the theme */
+    border-radius: 50%; /* Circle shape */
+    transition: transform 0.3s ease-in-out;
+}
+
+#about img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+#about h2 {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+#about p {
+    line-height: 1.6;
+}
+
+#about a.btn {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
