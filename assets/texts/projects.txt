@@ -13,7 +13,7 @@
     <!-- Project 2 -->
     <div class="col-md-6 project-card">
         <div class="card">
-            <img src="assets/images/face_recognition.jpg" class="card-img-top" alt="Face Recognition Machine">
+            <img src="assets/images/face_recognition.jpeg" class="card-img-top" alt="Face Recognition Machine">
             <div class="card-body">
                 <h5 class="card-title">Face Recognition Machine</h5>
                 <p class="card-text">Implemented a face recognition system using deep learning techniques to accurately identify and verify individuals in real-time.</p>
