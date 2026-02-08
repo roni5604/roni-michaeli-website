@@ -46,7 +46,7 @@ const projects = [
     description: "A comprehensive management system for yoga instructors and students. Features class scheduling, user management, and attendance tracking.",
     tags: ["Full Stack", "Management System", "UX/UI"],
     links: [{ label: "View Source", url: "https://github.com/roni5604/YogaTime" }],
-    image: "https://placehold.co/600x400/1e293b/cbd5e1?text=Yoga+App+Preview", 
+    image: "/images/YogaApp.png", // נתיב מקומי
     icon: <Layers size={20} />
   },
   {
@@ -54,7 +54,7 @@ const projects = [
     description: "Deep learning model for real-time emotion detection and identity classification. High-accuracy computer vision implementation.",
     tags: ["Python", "Deep Learning", "Computer Vision"],
     links: [{ label: "View Model", url: "https://github.com/roni5604/face_recognition_model" }],
-    image: "https://placehold.co/600x400/1e293b/cbd5e1?text=Face+Recognition+AI", 
+    image: "/images/face_rec.png", // נתיב מקומי
     icon: <Camera size={20} />
   },
   {
@@ -62,7 +62,7 @@ const projects = [
     description: "A decentralized voting platform ensuring transparency and immutability. Uses blockchain technology to prevent vote tampering.",
     tags: ["Blockchain", "Security", "Smart Contracts"],
     links: [{ label: "View System", url: "https://github.com/roni5604/company-voting-system" }],
-    image: "https://placehold.co/600x400/1e293b/cbd5e1?text=Blockchain+Voting", 
+    image: "/images/blockchain.png", // נתיב מקומי
     icon: <Box size={20} />
   },
   {
@@ -74,7 +74,7 @@ const projects = [
       { label: "Hapshuta", url: "https://hapshuta.com/" },
       { label: "Matan Refaely", url: "https://matanrefaely.com/" }
     ],
-    image: "https://placehold.co/600x400/1e293b/cbd5e1?text=Website+Collection", 
+    image: "/images/web_dev.png", // נתיב מקומי
     icon: <Globe size={20} />
   },
   {
@@ -85,7 +85,7 @@ const projects = [
       { label: "2D Simulation", url: "https://github.com/roni5604/Model_2D_drone_simulator" },
       { label: "3D Simulator", url: "https://github.com/roni5604/Drone_Simulator_final_project" }
     ],
-    image: "https://placehold.co/600x400/1e293b/cbd5e1?text=Drone+Simulation", 
+    image: "/images/drone.png", // נתיב מקומי
     icon: <Cpu size={20} />
   }
 ];
@@ -200,12 +200,9 @@ export default function App() {
             {/* CARD 1: Profile Photo & Core Identity */}
             <Card className="md:col-span-1 md:row-span-2 flex flex-col items-center text-center bg-gradient-to-b from-slate-800 to-slate-900">
               <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-500/30 mb-6 shadow-2xl bg-slate-800">
-                {/* IMPORTANT: 
-                   1. Put a picture named 'profile.jpg' in your public folder.
-                   2. The code below looks for it there. 
-                */}
+                {/* התמונה שלך נמשכת מכאן */}
                 <img 
-                  src="/profile.jpg"
+                  src="images/roniProfile.png"
                   onError={(e) => {e.target.src = 'https://placehold.co/400x400/1e293b/cbd5e1?text=Roni+Photo'}}
                   alt="Roni Michaeli" 
                   className="w-full h-full object-cover"
@@ -295,8 +292,8 @@ export default function App() {
                 </div>
                 <div className="h-10 w-[1px] bg-slate-700"></div>
                  <div className="text-center w-1/3">
-                  <h5 className="text-3xl font-bold text-white">10+</h5>
-                  <span className="text-xs text-slate-500 uppercase">Projects</span>
+                  <h5 className="text-3xl font-bold text-white">100%</h5>
+                  <span className="text-xs text-slate-500 uppercase">Commitment</span>
                 </div>
             </Card>
 
