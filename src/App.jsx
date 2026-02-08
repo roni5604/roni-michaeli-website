@@ -270,7 +270,7 @@ export default function App() {
             {/* CARD 4: Military Service */}
             <Card className="md:col-span-1 bg-slate-800/80">
                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                <Shield className="text-green-500" size={20} /> Operational Leader
+                <Shield className="text-green-500" size={20} /> Military Service
               </h4>
               <p className="text-slate-400 text-sm mb-2">
                 <b>2017-2021:</b> Managed a 24/7 war room at a high-risk base.
@@ -295,8 +295,8 @@ export default function App() {
                 </div>
                 <div className="h-10 w-[1px] bg-slate-700"></div>
                  <div className="text-center w-1/3">
-                  <h5 className="text-3xl font-bold text-white">100%</h5>
-                  <span className="text-xs text-slate-500 uppercase">Commitment</span>
+                  <h5 className="text-3xl font-bold text-white">10+</h5>
+                  <span className="text-xs text-slate-500 uppercase">Projects</span>
                 </div>
             </Card>
 
