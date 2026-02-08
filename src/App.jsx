@@ -14,7 +14,8 @@ import {
   Camera,
   Box,
   Shield,
-  Mouse // הוספתי אייקון עכבר לאפקט
+  Mouse,
+  FileText // Added Icon for CV
 } from 'lucide-react';
 
 // --- Animations Configuration ---
@@ -147,7 +148,7 @@ export default function App() {
           initial="hidden" 
           animate="visible" 
           variants={staggerContainer}
-          className="z-10"
+          className="z-10 flex flex-col items-center"
         >
           <motion.h2 variants={fadeInUp} className="text-cyan-400 font-medium tracking-widest uppercase mb-4">
             Full Stack Developer & Mathematician
@@ -155,15 +156,25 @@ export default function App() {
           <motion.h1 variants={fadeInUp} className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
             Roni Michaeli
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-10">
+          <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-8">
             Turning complex algorithms into efficient code.
             <br />
             B.Sc. Graduate | Private Tutor | Coder
           </motion.p>
+
+          {/* CV Button Added Here */}
+          <motion.a 
+            variants={fadeInUp}
+            href="/cv/Roni Michaeli CV.pdf" 
+            target="_blank"
+            className="flex items-center gap-2 mb-10 text-cyan-400 hover:text-white border-b border-cyan-400 hover:border-white transition-colors pb-1 text-sm font-bold uppercase tracking-wider"
+          >
+            <FileText size={16} /> Download Resume / CV
+          </motion.a>
           
           <motion.div variants={fadeInUp} className="flex gap-4 justify-center">
             <a href="#contact" className="px-8 py-3 bg-white text-slate-900 rounded-full font-bold hover:bg-cyan-500 hover:text-white transition-all duration-300">
-              Hire Me
+              Contact Me
             </a>
             <a href="#projects" className="px-8 py-3 border border-slate-600 rounded-full font-medium hover:border-white transition-all duration-300">
               View Projects
@@ -171,7 +182,7 @@ export default function App() {
           </motion.div>
         </motion.div>
 
-        {/* --- SCROLL INDICATOR WITH EFFECTS --- */}
+        {/* --- SCROLL INDICATOR --- */}
         <motion.a 
           href="#about"
           initial={{ opacity: 0 }} 
@@ -179,7 +190,6 @@ export default function App() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-10 flex flex-col items-center gap-3 cursor-pointer group"
         >
-          {/* Animated Mouse Icon */}
           <div className="w-[30px] h-[50px] border-2 border-slate-400 rounded-full flex justify-center pt-2 group-hover:border-cyan-400 transition-colors duration-300">
             <motion.div 
               animate={{ y: [0, 15, 0] }}
@@ -187,8 +197,6 @@ export default function App() {
               className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
             />
           </div>
-
-          {/* Double Arrows with Hover Effect */}
           <div className="flex flex-col items-center -mt-2 space-y-[-10px]">
             <ChevronDown size={24} className="text-slate-500 group-hover:text-white transition-colors duration-300 animate-bounce" />
             <ChevronDown size={24} className="text-slate-700 group-hover:text-cyan-500 transition-colors duration-300" />
@@ -212,7 +220,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* CARD 1: Profile Photo & Core Identity */}
+            {/* CARD 1: Profile Photo */}
             <Card className="md:col-span-1 md:row-span-2 flex flex-col items-center text-center bg-gradient-to-b from-slate-800 to-slate-900">
               <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-500/30 mb-6 shadow-2xl bg-slate-800">
                 <img 
@@ -239,7 +247,7 @@ export default function App() {
               </div>
             </Card>
 
-            {/* CARD 2: Bio / The Pitch */}
+            {/* CARD 2: Bio */}
             <Card className="md:col-span-2">
               <div className="flex items-start gap-4">
                 <Terminal className="text-purple-500 mt-1" size={32} />
@@ -439,10 +447,20 @@ export default function App() {
               <Mail size={24} />
               Roniro5604@gmail.com
             </a>
+
+            {/* Added Footer CV Button */}
+            <a 
+              href="/cv/Roni Michaeli CV.pdf"
+              target="_blank" 
+              className="flex items-center gap-3 bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all"
+            >
+              <FileText size={24} />
+              Resume
+            </a>
           </div>
 
           <div className="mt-20 text-slate-600 text-sm">
-            © 2025 Roni Michaeli. Built with React & Tailwind.
+            © 2026 Roni Michaeli.
           </div>
         </div>
       </footer>
