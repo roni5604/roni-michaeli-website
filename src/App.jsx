@@ -13,11 +13,11 @@ import {
   Globe,
   Camera,
   Box,
-  Shield
+  Shield,
+  Mouse // הוספתי אייקון עכבר לאפקט
 } from 'lucide-react';
 
 // --- Animations Configuration ---
-// Controls how elements slide up
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { 
@@ -27,7 +27,6 @@ const fadeInUp = {
   }
 };
 
-// Controls the timing of the About Me cards appearing one by one
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -46,7 +45,7 @@ const projects = [
     description: "A comprehensive management system for yoga instructors and students. Features class scheduling, user management, and attendance tracking.",
     tags: ["Full Stack", "Management System", "UX/UI"],
     links: [{ label: "View Source", url: "https://github.com/roni5604/YogaTime" }],
-    image: "/images/YogaApp.png", // נתיב מקומי
+    image: "/images/YogaApp.png",
     icon: <Layers size={20} />
   },
   {
@@ -54,7 +53,7 @@ const projects = [
     description: "Deep learning model for real-time emotion detection and identity classification. High-accuracy computer vision implementation.",
     tags: ["Python", "Deep Learning", "Computer Vision"],
     links: [{ label: "View Model", url: "https://github.com/roni5604/face_recognition_model" }],
-    image: "/images/face_rec.png", // נתיב מקומי
+    image: "/images/face_rec.png",
     icon: <Camera size={20} />
   },
   {
@@ -62,7 +61,7 @@ const projects = [
     description: "A decentralized voting platform ensuring transparency and immutability. Uses blockchain technology to prevent vote tampering.",
     tags: ["Blockchain", "Security", "Smart Contracts"],
     links: [{ label: "View System", url: "https://github.com/roni5604/company-voting-system" }],
-    image: "/images/blockchain.png", // נתיב מקומי
+    image: "/images/blockchain.png",
     icon: <Box size={20} />
   },
   {
@@ -74,7 +73,7 @@ const projects = [
       { label: "Hapshuta", url: "https://hapshuta.com/" },
       { label: "Matan Refaely", url: "https://matanrefaely.com/" }
     ],
-    image: "/images/web_dev.png", // נתיב מקומי
+    image: "/images/web_dev.png",
     icon: <Globe size={20} />
   },
   {
@@ -85,7 +84,7 @@ const projects = [
       { label: "2D Simulation", url: "https://github.com/roni5604/Model_2D_drone_simulator" },
       { label: "3D Simulator", url: "https://github.com/roni5604/Drone_Simulator_final_project" }
     ],
-    image: "/images/drone.png", // נתיב מקומי
+    image: "/images/drone.png",
     icon: <Cpu size={20} />
   }
 ];
@@ -172,14 +171,30 @@ export default function App() {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        {/* --- SCROLL INDICATOR WITH EFFECTS --- */}
+        <motion.a 
+          href="#about"
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 animate-bounce"
+          className="absolute bottom-10 flex flex-col items-center gap-3 cursor-pointer group"
         >
-          <ChevronDown size={32} className="text-slate-500" />
-        </motion.div>
+          {/* Animated Mouse Icon */}
+          <div className="w-[30px] h-[50px] border-2 border-slate-400 rounded-full flex justify-center pt-2 group-hover:border-cyan-400 transition-colors duration-300">
+            <motion.div 
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+              className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
+            />
+          </div>
+
+          {/* Double Arrows with Hover Effect */}
+          <div className="flex flex-col items-center -mt-2 space-y-[-10px]">
+            <ChevronDown size={24} className="text-slate-500 group-hover:text-white transition-colors duration-300 animate-bounce" />
+            <ChevronDown size={24} className="text-slate-700 group-hover:text-cyan-500 transition-colors duration-300" />
+          </div>
+        </motion.a>
+
       </section>
 
       {/* 2. ABOUT ME SECTION (Bento Grid) */}
@@ -200,7 +215,6 @@ export default function App() {
             {/* CARD 1: Profile Photo & Core Identity */}
             <Card className="md:col-span-1 md:row-span-2 flex flex-col items-center text-center bg-gradient-to-b from-slate-800 to-slate-900">
               <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-500/30 mb-6 shadow-2xl bg-slate-800">
-                {/* התמונה שלך נמשכת מכאן */}
                 <img 
                   src="images/roniProfile.png"
                   onError={(e) => {e.target.src = 'https://placehold.co/400x400/1e293b/cbd5e1?text=Roni+Photo'}}
