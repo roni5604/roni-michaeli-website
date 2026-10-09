@@ -5,7 +5,7 @@
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { startNeuralField } from './neural-field';
+import { startBinaryField, drawStaticBinary } from './binary-field';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -300,23 +300,27 @@ function setupMobileMenu() {
 }
 
 function setupHero() {
-  const canvas = document.querySelector<HTMLCanvasElement>('[data-neural]');
-  if (!canvas || reduced()) return;
-  const lowPower = (navigator as any).hardwareConcurrency && (navigator as any).hardwareConcurrency <= 2;
-  if (lowPower) return;
-  let stop: Cleanup | null = null;
-  const begin = () => (stop = startNeuralField(canvas));
-  // Start after first paint so the content is never blocked.
-  const id = 'requestIdleCallback' in window ? (window as any).requestIdleCallback(begin, { timeout: 600 }) : setTimeout(begin, 200);
-  onCleanup(() => {
-    if ('cancelIdleCallback' in window) (window as any).cancelIdleCallback(id);
-    else clearTimeout(id);
-    stop?.();
-  });
+  const canvases = $$<HTMLCanvasElement>('[data-binary]');
+  for (const canvas of canvases) {
+    if (reduced()) {
+      drawStaticBinary(canvas);
+      continue;
+    }
+    let stop: Cleanup | null = null;
+    const begin = () => (stop = startBinaryField(canvas));
+    // Start after first paint so the content is never blocked.
+    const w = window as any;
+    const id = w.requestIdleCallback ? w.requestIdleCallback(begin, { timeout: 500 }) : setTimeout(begin, 150);
+    onCleanup(() => {
+      if (w.cancelIdleCallback) w.cancelIdleCallback(id);
+      else clearTimeout(id);
+      stop?.();
+    });
+  }
 
   // Parallax on the portrait.
   const portrait = document.querySelector<HTMLElement>('[data-parallax]');
-  if (portrait) {
+  if (portrait && !reduced()) {
     const tween = gsap.to(portrait, {
       yPercent: 12,
       ease: 'none',
@@ -358,7 +362,9 @@ function setupHorizontalGallery() {
     }
     // Keyboard users: bring a focused card into view by scrolling the page.
     const onFocus = (e: FocusEvent) => {
-      const card = (e.target as HTMLElement).closest<HTMLElement>('[data-hscroll-item]');
+      const target = e.target as HTMLElement;
+      if (!target.matches(':focus-visible')) return; // mouse clicks shouldn't scroll the page
+      const card = target.closest<HTMLElement>('[data-hscroll-item]');
       const st = tween.scrollTrigger;
       if (!card || !st) return;
       const max = distance() || 1;
@@ -466,6 +472,70 @@ function setupLightbox() {
   });
 }
 
+function setupCodeWindows() {
+  const panels = $$('[data-code-reveal]');
+  panels.forEach((panel) => $$('.line', panel).forEach((l, i) => l.style.setProperty('--i', String(Math.min(i, 30)))));
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) if (e.isIntersecting) e.target.classList.add('is-typed');
+    },
+    { threshold: 0.25 },
+  );
+  panels.forEach((p) => io.observe(p));
+  onCleanup(() => io.disconnect());
+
+  for (const group of $$('[data-tabs]')) {
+    const tabs = $$<HTMLButtonElement>('[role="tab"]', group);
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls') || '');
+        if (!panel) continue;
+        panel.hidden = !on;
+        if (on) {
+          panel.classList.remove('is-typed');
+          requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('is-typed')));
+        }
+      }
+      if (focus) tab.focus();
+    };
+    tabs.forEach((t, i) => {
+      on(t, 'click', () => select(t));
+      on(t, 'keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+          select(next, true);
+        }
+      });
+    });
+  }
+}
+
+function setupDock() {
+  const dock = document.querySelector<HTMLElement>('[data-dock]');
+  if (!dock) return;
+  const contact = document.getElementById('contact');
+  let contactVisible = false;
+  const update = () => {
+    const show = window.scrollY > window.innerHeight * 0.6 && !contactVisible;
+    dock.classList.toggle('is-shown', show);
+    dock.inert = !show;
+  };
+  if (contact) {
+    const io = new IntersectionObserver(([e]) => {
+      contactVisible = e.isIntersecting;
+      update();
+    });
+    io.observe(contact);
+    onCleanup(() => io.disconnect());
+  }
+  update();
+  on(window, 'scroll', update, { passive: true });
+}
+
 function setupEmail() {
   for (const a of $$<HTMLAnchorElement>('[data-email]')) {
     const [user, domain] = (a.dataset.email || '').split('|');
@@ -552,6 +622,8 @@ function init() {
   setupTimeline();
   setupFilters();
   setupLightbox();
+  setupCodeWindows();
+  setupDock();
   setupEmail();
   setupMotionToggle();
   setupCursorGlow();

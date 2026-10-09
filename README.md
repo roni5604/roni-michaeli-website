@@ -7,7 +7,7 @@ Personal site of **Roni Michaeli** — AI-native full-stack developer.
 - [Astro 5](https://astro.build) — static output, View Transitions between pages, content collections
 - React islands only where needed (the ⌘K command menu, animated with Motion)
 - Tailwind CSS v4 with design tokens in `src/styles/global.css`
-- GSAP + ScrollTrigger and Lenis for scroll-driven effects; a canvas "neural field" in the hero
+- GSAP + ScrollTrigger and Lenis for scroll-driven effects; an interactive 0/1 binary field that reacts to the cursor and touch
 - Self-hosted variable fonts (Inter, Space Grotesk, JetBrains Mono) — no third-party requests
 
 ## Working on it

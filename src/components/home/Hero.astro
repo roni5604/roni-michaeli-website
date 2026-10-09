@@ -9,8 +9,7 @@ const liveCount = projects.filter((p) => p.data.live).length;
 ---
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16" aria-labelledby="hero-title">
-  <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-  <canvas data-neural class="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-[1500ms]" aria-hidden="true"
+  <canvas data-binary class="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-[1500ms]" aria-hidden="true"
   ></canvas>
   <div class="pointer-events-none absolute -top-32 -left-40 h-[36rem] w-[36rem] rounded-full bg-cyan/15 blur-[120px]" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -right-40 bottom-0 h-[34rem] w-[34rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
@@ -31,8 +30,8 @@ const liveCount = projects.filter((p) => p.data.live).length;
       </h1>
 
       <p data-reveal style="--d:3" class="mt-8 max-w-xl text-lg leading-relaxed text-muted md:text-xl">
-        I build <span class="text-ink">intelligent products</span> — LLM-powered apps, machine-learning models and polished web &amp;
-        mobile experiences — and I use <span class="text-ink">AI agents</span> to ship them faster without cutting corners.
+        <span class="text-ink">B.Sc. Computer Science &amp; Mathematics</span> graduate. I write clean, efficient code myself — and I specialise in
+        <span class="text-ink">working with AI</span> to build complete products: games, web &amp; mobile apps and machine-learning models.
       </p>
 
       <div data-reveal style="--d:4" class="mt-7 inline-flex max-w-full items-center gap-2 rounded-xl border border-line bg-bg-2/80 px-4 py-3 font-mono text-sm">
@@ -45,10 +44,10 @@ const liveCount = projects.filter((p) => p.data.live).length;
 
       <div data-reveal style="--d:5" class="mt-10 flex flex-wrap items-center gap-3">
         <a href="#work" class="btn btn-primary" data-magnetic>
-          Explore my work
+          See my projects
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost" data-magnetic>Let’s talk</a>
+        <a href="#contact" class="btn btn-ghost" data-magnetic>Hire me</a>
         <a href={site.cv} target="_blank" rel="noopener" class="btn text-muted hover:text-ink">
           Download CV <span class="sr-only">(PDF, opens in a new tab)</span>
         </a>
@@ -64,8 +63,8 @@ const liveCount = projects.filter((p) => p.data.live).length;
           <dd class="mt-1 font-display text-3xl font-semibold" data-count={liveCount}>{liveCount}</dd>
         </div>
         <div>
-          <dt class="text-xs tracking-wider text-faint uppercase">Hebrew words</dt>
-          <dd class="mt-1 font-display text-3xl font-semibold" data-count="67008">67,008</dd>
+          <dt class="text-xs tracking-wider text-faint uppercase">Languages I code in</dt>
+          <dd class="mt-1 font-display text-3xl font-semibold"><span data-count="10" data-suffix="+">10+</span></dd>
         </div>
       </dl>
     </div>
@@ -88,11 +87,11 @@ const liveCount = projects.filter((p) => p.data.live).length;
         </div>
 
         <div class="glass absolute -left-6 top-10 hidden rounded-2xl px-4 py-3 sm:block" data-float="18" aria-hidden="true">
-          <p class="font-mono text-[10px] tracking-widest text-faint uppercase">Now building</p>
-          <p class="mt-1 text-sm font-semibold">LLM-powered products</p>
+          <p class="font-mono text-[10px] tracking-widest text-faint uppercase">Status</p>
+          <p class="mt-1 flex items-center gap-2 text-sm font-semibold"><span class="live-dot"></span> Available for work</p>
         </div>
         <div class="glass absolute -right-4 bottom-24 hidden rounded-2xl px-4 py-3 sm:block" data-float="30" aria-hidden="true">
-          <p class="flex items-center gap-2 text-sm font-semibold"><span class="text-cyan">◆</span> PyTorch · React · Flutter</p>
+          <p class="flex items-center gap-2 text-sm font-semibold"><span class="text-cyan">{'</>'}</span> Python · TypeScript · C#</p>
         </div>
         <div class="glass absolute -bottom-6 left-8 rounded-2xl px-4 py-3" data-float="12" aria-hidden="true">
           <p class="font-mono text-xs text-muted"><span class="text-lime">✓</span> B.Sc. CS &amp; Mathematics</p>

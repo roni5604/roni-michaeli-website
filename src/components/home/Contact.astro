@@ -3,14 +3,16 @@ import { site } from '../../data/site';
 ---
 
 <section id="contact" class="relative overflow-hidden py-28 md:py-40" aria-labelledby="contact-title">
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(34_211_238/0.14),transparent_60%)]" aria-hidden="true"></div>
+  <canvas data-binary class="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000" aria-hidden="true"></canvas>
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(5_7_13/0.85),rgb(5_7_13/0.4)_45%,transparent_75%)]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(34_211_238/0.12),transparent_60%)]" aria-hidden="true"></div>
   <div class="container-x relative text-center">
-    <p class="eyebrow justify-center" data-reveal>Contact</p>
+    <p class="eyebrow justify-center" data-reveal><span class="live-dot" aria-hidden="true"></span> Available for work</p>
     <h2 id="contact-title" class="mx-auto mt-6 max-w-5xl text-[clamp(2.6rem,7vw,6rem)] leading-[0.95] font-bold" data-split>
-      Let’s build something intelligent.
+      Looking for a developer? Let’s talk.
     </h2>
     <p class="mx-auto mt-8 max-w-xl text-lg text-muted" data-reveal style="--d:1">
-      I’m open to full-time roles in full-stack, backend and AI engineering. The fastest way to reach me is WhatsApp — I usually answer the same day.
+      I’m available now for a full-time role — full-stack, backend or AI-focused. The fastest way to reach me is WhatsApp; I usually answer the same day.
     </p>
 
     <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row" data-reveal style="--d:2">
@@ -29,6 +31,14 @@ import { site } from '../../data/site';
       <a href={site.cv} target="_blank" rel="noopener" class="btn btn-ghost !px-8 !py-4 text-base" data-magnetic>
         Resume (PDF) <span class="sr-only">opens in a new tab</span>
       </a>
+      <a href={site.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost !px-8 !py-4 text-base" data-magnetic>
+        GitHub <span class="sr-only">(opens in a new tab)</span>
+      </a>
     </div>
+    <p class="mt-8 font-mono text-sm text-muted" data-reveal style="--d:3">
+      <a href="tel:+972544396677" class="hover:text-ink">{site.phoneDisplay}</a>
+      <span class="mx-3 text-faint" aria-hidden="true">·</span>
+      {site.location}
+    </p>
   </div>
 </section>

@@ -1,32 +1,38 @@
 ---
 import { Image } from 'astro:assets';
 import roni from '../../assets/roni.jpg';
+import CodeWindow from '../CodeWindow.astro';
 ---
 
 <section id="about" class="relative py-28 md:py-36" aria-labelledby="about-title">
   <div class="container-x">
     <p class="eyebrow" data-reveal>About</p>
-    <h2 id="about-title" class="mt-5 max-w-3xl text-4xl font-semibold md:text-6xl" data-split>
-      Mathematician by training. Builder by obsession.
+    <h2 id="about-title" class="mt-5 max-w-4xl text-4xl font-semibold md:text-6xl" data-split>
+      Computer scientist. Hands-on coder. AI specialist.
     </h2>
 
-    <div class="mt-16 grid auto-rows-[minmax(0,auto)] gap-5 md:grid-cols-6">
+    <div class="mt-16 grid gap-5 md:grid-cols-6">
       <!-- Bio -->
       <article data-reveal class="spot-card glass rounded-3xl p-8 md:col-span-4 md:row-span-2" data-tilt="off">
         <div class="relative z-[2]">
           <p class="font-mono text-xs tracking-[0.2em] text-cyan uppercase">The short version</p>
           <p class="mt-6 text-xl leading-relaxed text-ink md:text-2xl">
-            I'm Roni — a <strong class="font-semibold">B.Sc. graduate in Computer Science &amp; Mathematics</strong> from Ariel University who loves taking
-            hard problems all the way from idea to production.
+            I'm Roni — a software developer with a <strong class="font-semibold">B.Sc. in Computer Science &amp; Mathematics</strong> from Ariel University.
+            I write my own code, and I love taking hard problems all the way from idea to a working product.
           </p>
           <p class="mt-6 leading-relaxed text-muted">
-            My path runs through a 24/7 military operations room, years of tutoring university students in CS and maths, client web projects and a lot of
-            late-night building. Today I focus on <span class="text-ink">AI</span>: products where language models and ML do real work, and a development
-            workflow where AI agents help me ship complete products — a Flutter word game, a seven-game multiplayer card platform, an open Hebrew NLP
-            dataset — at a pace that used to need a team.
+            It started in high school, where I majored in computer science and never stopped. Since then I’ve written code in C, C++, C#, Java, Python,
+            Dart and TypeScript — algorithms, simulations, deep-learning models, Android apps, websites and games — and spent years teaching CS and maths to
+            university students.
           </p>
           <p class="mt-6 leading-relaxed text-muted">
-            I’m looking for my next challenge as a <span class="text-ink">full-stack, backend or AI engineer</span> in a team that ships.
+            Today I specialise in <span class="text-ink">working with AI</span>: I design and write the core logic myself, and use AI coding agents with
+            tests and reviews to build complete products — a Flutter word game, a seven-game multiplayer card platform, an open Hebrew dataset — at a pace
+            that used to need a team.
+          </p>
+          <p class="mt-6 inline-flex items-center gap-3 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-200">
+            <span class="live-dot" aria-hidden="true"></span>
+            Available now for a full-time developer role — full-stack, backend or AI-focused.
           </p>
         </div>
       </article>
@@ -46,36 +52,35 @@ import roni from '../../assets/roni.jpg';
         </figcaption>
       </figure>
 
-      <!-- Stats -->
-      <div data-reveal style="--d:2" class="glass grid grid-cols-3 divide-x divide-line rounded-3xl md:col-span-3">
-        <div class="p-4 text-center sm:p-6">
-          <p class="font-display text-3xl font-bold text-gradient sm:text-4xl">B.Sc.</p>
-          <p class="mt-1 text-xs tracking-wider text-faint uppercase">CS &amp; Maths</p>
-        </div>
-        <div class="p-4 text-center sm:p-6">
-          <p class="font-display text-3xl font-bold sm:text-4xl"><span data-count="4" data-suffix="">4</span></p>
-          <p class="mt-1 text-xs tracking-wider text-faint uppercase">Years ops-room</p>
-        </div>
-        <div class="p-4 text-center sm:p-6">
-          <p class="font-display text-3xl font-bold sm:text-4xl"><span data-count="10" data-suffix="+">10+</span></p>
-          <p class="mt-1 text-xs tracking-wider text-faint uppercase">Languages &amp; stacks</p>
-        </div>
+      <!-- Code window -->
+      <div data-reveal style="--d:2" class="md:col-span-4">
+        <CodeWindow />
       </div>
 
-      <!-- Service -->
-      <article data-reveal style="--d:3" class="spot-card glass rounded-3xl p-6 md:col-span-3" data-tilt="off">
-        <div class="relative z-[2] flex items-start gap-4">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-lime/10 text-lime" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"></path></svg>
-          </span>
-          <div>
-            <h3 class="font-display text-lg font-semibold">Calm under pressure</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              2017–2021: managed a 24/7 war room at a high-risk base — security systems, cameras and sensors, rapid response when it mattered.
-            </p>
+      <!-- Stats + roots -->
+      <div class="grid gap-5 md:col-span-2">
+        <div data-reveal style="--d:3" class="glass grid grid-cols-2 divide-x divide-line rounded-3xl">
+          <div class="p-5 text-center">
+            <p class="font-display text-3xl font-bold text-gradient">B.Sc.</p>
+            <p class="mt-1 text-xs tracking-wider text-faint uppercase">CS &amp; Maths</p>
+          </div>
+          <div class="p-5 text-center">
+            <p class="font-display text-3xl font-bold"><span data-count="14">14</span></p>
+            <p class="mt-1 text-xs tracking-wider text-faint uppercase">Projects</p>
           </div>
         </div>
-      </article>
+        <article data-reveal style="--d:4" class="spot-card glass rounded-3xl p-6" data-tilt="off">
+          <div class="relative z-[2]">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-cyan/10 text-cyan" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6l-3 12"></path></svg>
+            </span>
+            <h3 class="mt-4 font-display text-lg font-semibold">Coding since high school</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              5 units of Computer Science, Network Management and Physics — the start of a long love affair with computers.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>

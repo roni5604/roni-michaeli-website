@@ -13,6 +13,7 @@ const { project, variant = 'grid', index = 0, eager = false } = Astro.props;
 const { data, id } = project;
 const href = `/projects/${id}`;
 const host = data.live ? new URL(data.live).host.replace(/^www\./, '') : null;
+const liveLabel = host && host.endsWith('github.io') ? 'Live demo' : host;
 ---
 
 <article
@@ -74,7 +75,7 @@ const host = data.live ? new URL(data.live).host.replace(/^www\./, '') : null;
             rel="noopener noreferrer"
             class="relative z-[3] inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-xs text-muted transition-colors hover:border-[var(--accent)] hover:text-ink"
           >
-            {host}
+            {liveLabel}
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M7 17 17 7M9 7h8v8" />
             </svg>

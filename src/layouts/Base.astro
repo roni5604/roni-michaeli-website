@@ -6,6 +6,7 @@ import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ContactDock from '../components/ContactDock.astro';
 import CommandPalette from '../components/CommandPalette';
 import { site, nav } from '../data/site';
 import { getCollection } from 'astro:content';
@@ -41,7 +42,7 @@ const person = {
   image: `${site.url}/og.jpg`,
   jobTitle: site.role,
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Ariel University' },
-  knowsAbout: ['Artificial intelligence', 'Large language models', 'Machine learning', 'Full-stack development', 'React', 'Python'],
+  knowsAbout: ['Software development', 'Computer science', 'Artificial intelligence', 'Machine learning', 'Full-stack development', 'Python', 'TypeScript', 'C#'],
   address: { '@type': 'PostalAddress', addressCountry: 'IL' },
   sameAs: [site.github],
 };
@@ -97,7 +98,7 @@ const pageAnim = {
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
     />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -138,6 +139,8 @@ const pageAnim = {
     </main>
 
     <Footer />
+
+    <ContactDock />
 
     <CommandPalette client:idle items={paletteItems} transition:persist="palette" />
 
