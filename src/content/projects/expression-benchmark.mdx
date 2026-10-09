@@ -1,0 +1,40 @@
+---
+title: Expression Model Benchmark
+tagline: Five models, one problem — measuring what actually moves accuracy.
+summary: A controlled comparison of a baseline, linear and logistic regression, a deeper MLP and an augmented CNN on 48×48 facial-expression images, built in PyTorch and scikit-learn.
+year: '2025'
+order: 7
+category: AI & ML
+role: Developer — experiments, training and report
+stack: [Python, PyTorch, torchvision, scikit-learn, Matplotlib]
+highlights:
+  - CNN with augmentation more than doubles the baseline's accuracy (0.25 → 0.56)
+  - Same 70 / 15 / 15 split for every model
+  - Written report comparing accuracy, precision and recall
+cover: ../../assets/projects/expression-benchmark/cover.jpg
+coverAlt: Bar chart comparing accuracy, precision and recall for five models — the CNN scores highest
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/deep-learning-project
+accent: '#f472b6'
+---
+
+## Question
+
+How much does model choice really matter for facial-expression recognition? To answer honestly, every model gets the **same data split** and the **same metrics**.
+
+## Results (validation)
+
+| Model | Accuracy | Precision | Recall |
+| --- | ---: | ---: | ---: |
+| Baseline (majority class) | 0.250 | 0.036 | 0.143 |
+| Linear regression | 0.221 | 0.221 | 0.154 |
+| Logistic regression | 0.352 | 0.329 | 0.303 |
+| Deeper MLP (256→128, dropout) | 0.455 | 0.472 | 0.416 |
+| **CNN + augmentation** | **0.560** | **0.570** | **0.480** |
+
+## Takeaways
+
+- Treating classification as regression is a trap — linear regression does worse than guessing the majority class.
+- Non-linearity helps a lot, but **convolutions and augmentation** are what unlock the jump.
+- A strong baseline keeps everyone honest.

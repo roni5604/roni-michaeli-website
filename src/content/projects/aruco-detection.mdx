@@ -1,0 +1,26 @@
+---
+title: Marker Pose from Video
+tagline: Computer vision that finds ArUco markers and measures distance and angle, frame by frame.
+summary: Detects ArUco markers in drone video, estimates each marker's distance, yaw, pitch and roll, annotates the video and exports per-frame data to CSV — groundwork for autonomous drone navigation.
+year: '2024'
+order: 14
+category: AI & ML
+role: Developer — detection, pose estimation and tooling
+stack: [Python, OpenCV, NumPy, Pose estimation]
+highlights:
+  - Marker ID, distance and yaw drawn on every frame
+  - 3D pose per marker exported to CSV
+  - Frame-by-frame review controls
+cover: ../../assets/projects/aruco-detection/cover.jpg
+coverAlt: Charts of distance and yaw angle over video frames for several detected markers
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/Detect_QR_on_video
+accent: '#34d399'
+---
+
+## What it does
+
+For every frame of a video, the detector finds ArUco markers and annotates each with its **ID**, **distance from the camera** and **yaw angle**, outlining it in green.
+
+It also writes a CSV with the marker's 2D corners and 3D pose — **distance, yaw, pitch and roll** — so the results can drive a navigation algorithm, not just a demo.

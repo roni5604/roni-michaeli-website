@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import roni from '../../assets/roni.jpg';
+---
+
+<section id="about" class="relative py-28 md:py-36" aria-labelledby="about-title">
+  <div class="container-x">
+    <p class="eyebrow" data-reveal>About</p>
+    <h2 id="about-title" class="mt-5 max-w-3xl text-4xl font-semibold md:text-6xl" data-split>
+      Mathematician by training. Builder by obsession.
+    </h2>
+
+    <div class="mt-16 grid auto-rows-[minmax(0,auto)] gap-5 md:grid-cols-6">
+      <!-- Bio -->
+      <article data-reveal class="spot-card glass rounded-3xl p-8 md:col-span-4 md:row-span-2" data-tilt="off">
+        <div class="relative z-[2]">
+          <p class="font-mono text-xs tracking-[0.2em] text-cyan uppercase">The short version</p>
+          <p class="mt-6 text-xl leading-relaxed text-ink md:text-2xl">
+            I'm Roni — a <strong class="font-semibold">B.Sc. graduate in Computer Science &amp; Mathematics</strong> from Ariel University who loves taking
+            hard problems all the way from idea to production.
+          </p>
+          <p class="mt-6 leading-relaxed text-muted">
+            My path runs through a 24/7 military operations room, years of tutoring university students in CS and maths, client web projects and a lot of
+            late-night building. Today I focus on <span class="text-ink">AI</span>: products where language models and ML do real work, and a development
+            workflow where AI agents help me ship complete products — a Flutter word game, a seven-game multiplayer card platform, an open Hebrew NLP
+            dataset — at a pace that used to need a team.
+          </p>
+          <p class="mt-6 leading-relaxed text-muted">
+            I’m looking for my next challenge as a <span class="text-ink">full-stack, backend or AI engineer</span> in a team that ships.
+          </p>
+        </div>
+      </article>
+
+      <!-- Portrait crop -->
+      <figure data-reveal style="--d:1" class="spot-card group relative overflow-hidden rounded-3xl border border-line md:col-span-2 md:row-span-2">
+        <Image
+          src={roni}
+          widths={[360, 560, 760]}
+          sizes="(min-width: 768px) 30vw, 90vw"
+          alt="Roni Michaeli, hands in pockets, wearing a light beige suit"
+          class="h-full min-h-[22rem] w-full object-cover object-[50%_30%] transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-105"
+        />
+        <figcaption class="absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-bg via-bg/70 to-transparent p-6">
+          <p class="font-display text-lg font-semibold">Roni Michaeli</p>
+          <p class="text-sm text-muted">Israel · Hebrew (native), English (fluent)</p>
+        </figcaption>
+      </figure>
+
+      <!-- Stats -->
+      <div data-reveal style="--d:2" class="glass grid grid-cols-3 divide-x divide-line rounded-3xl md:col-span-3">
+        <div class="p-6 text-center">
+          <p class="font-display text-4xl font-bold text-gradient">B.Sc.</p>
+          <p class="mt-1 text-xs tracking-wider text-faint uppercase">CS &amp; Maths</p>
+        </div>
+        <div class="p-6 text-center">
+          <p class="font-display text-4xl font-bold"><span data-count="4" data-suffix="">4</span></p>
+          <p class="mt-1 text-xs tracking-wider text-faint uppercase">Years ops-room</p>
+        </div>
+        <div class="p-6 text-center">
+          <p class="font-display text-4xl font-bold"><span data-count="10" data-suffix="+">10+</span></p>
+          <p class="mt-1 text-xs tracking-wider text-faint uppercase">Languages &amp; stacks</p>
+        </div>
+      </div>
+
+      <!-- Service -->
+      <article data-reveal style="--d:3" class="spot-card glass rounded-3xl p-6 md:col-span-3" data-tilt="off">
+        <div class="relative z-[2] flex items-start gap-4">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-lime/10 text-lime" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"></path></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-lg font-semibold">Calm under pressure</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              2017–2021: managed a 24/7 war room at a high-risk base — security systems, cameras and sensors, rapid response when it mattered.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

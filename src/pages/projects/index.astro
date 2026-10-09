@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { categories } from '../../content.config';
+import { site } from '../../data/site';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const used = categories.filter((c) => projects.some((p) => p.data.category === c));
+const counts = Object.fromEntries(used.map((c) => [c, projects.filter((p) => p.data.category === c).length]));
+const live = projects.filter((p) => p.data.live);
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: projects.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${site.url}/projects/${p.id}`,
+    name: p.data.title,
+  })),
+};
+---
+
+<Base title="Projects" description={`${projects.length} projects by Roni Michaeli — AI & ML, live web products, games and simulations.`} jsonLd={[itemList]}>
+  <section class="relative overflow-hidden pt-40 pb-16" aria-labelledby="projects-title">
+    <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -top-40 left-1/3 h-[30rem] w-[30rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
+    <div class="container-x relative">
+      <nav aria-label="Breadcrumb" class="font-mono text-xs text-faint" data-reveal>
+        <a href="/" class="hover:text-ink">Home</a> <span aria-hidden="true">/</span> <span aria-current="page" class="text-muted">Projects</span>
+      </nav>
+      <h1 id="projects-title" class="mt-6 text-5xl font-bold md:text-7xl" data-split>Every project, one place.</h1>
+      <p class="mt-6 max-w-2xl text-lg text-muted" data-reveal style="--d:1">
+        {projects.length} projects across AI, products, games and simulation — {live.length} of them live right now. Open any card for the story behind it.
+      </p>
+
+      <!-- Live strip -->
+      <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:2">
+        <span class="inline-flex items-center gap-2 font-mono text-xs text-faint uppercase"><span class="live-dot" aria-hidden="true"></span> Live now</span>
+        {
+          live.map((p) => (
+            <a
+              href={p.data.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-2 text-sm text-muted transition-colors hover:border-emerald-400/60 hover:text-ink"
+            >
+              {p.data.title}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-32" aria-label="Project list">
+    <div class="container-x">
+      <div class="sticky top-20 z-10 -mx-2 mb-10 py-3" data-filters>
+        <div class="glass inline-flex max-w-full flex-wrap gap-1 rounded-full p-1.5" role="group" aria-label="Filter projects by category">
+          <button type="button" data-filter="all" aria-pressed="true" class="filter-btn">All <span class="text-faint">{projects.length}</span></button>
+          {
+            used.map((c) => (
+              <button type="button" data-filter={c} aria-pressed="false" class="filter-btn">
+                {c} <span class="text-faint">{counts[c]}</span>
+              </button>
+            ))
+          }
+        </div>
+        <p data-filter-status class="sr-only" role="status" aria-live="polite"></p>
+      </div>
+
+      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          projects.map((p, i) => (
+            <li data-cat={p.data.category}>
+              <ProjectCard project={p} index={i} eager={i < 3} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .filter-btn {
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+  .filter-btn:hover {
+    color: var(--color-ink);
+  }
+  .filter-btn[aria-pressed='true'] {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+  .filter-btn[aria-pressed='true'] span {
+    color: rgb(5 7 13 / 0.6);
+  }
+</style>

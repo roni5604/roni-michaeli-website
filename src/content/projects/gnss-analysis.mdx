@@ -1,0 +1,31 @@
+---
+title: GNSS Positioning from Raw Data
+tagline: Solving a phone's position from raw satellite measurements — no black boxes.
+summary: Parses raw Android GNSS logs, computes satellite positions from ephemeris data and solves the receiver position with least squares, exporting paths to CSV and KML.
+year: '2024'
+order: 13
+category: Data
+role: Co-developer — parsing, positioning and visualisation
+stack: [Python, Pandas, NumPy, Matplotlib, NavPy, KML]
+highlights:
+  - Raw pseudoranges to latitude, longitude and altitude
+  - Satellite positions computed from ephemeris
+  - Path exported to KML for Google Earth
+cover: ../../assets/projects/gnss-analysis/cover.jpg
+coverAlt: Map-style chart comparing the computed driving route with the phone's own reference path
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/gnss-analysis
+accent: '#22d3ee'
+---
+
+## What it does
+
+Phones expose the **raw measurements** behind GPS. This project uses them to compute position from first principles:
+
+1. Parse raw GNSS logs into tidy tables.
+2. Compute each satellite's position from ephemeris data.
+3. Solve the receiver position with **iterative least squares**.
+4. Export the path to CSV and **KML** for Google Earth.
+
+The chart compares my solution with the phone's own fused location on a real drive — including the honest outliers before the solver converges.

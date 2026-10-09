@@ -1,0 +1,26 @@
+---
+import Base from './Base.astro';
+import { proseClasses } from '../data/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  updated?: string;
+}
+const { title, description, eyebrow, updated } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <section class="relative overflow-hidden pt-40 pb-28">
+    <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="container-x relative max-w-3xl">
+      {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+      <h1 class="mt-5 text-4xl font-bold md:text-6xl" data-split>{title}</h1>
+      {updated && <p class="mt-4 font-mono text-xs text-faint" data-reveal>Last updated: {updated}</p>}
+      <div class:list={[proseClasses, 'mt-10']}>
+        <slot />
+      </div>
+    </div>
+  </section>
+</Base>

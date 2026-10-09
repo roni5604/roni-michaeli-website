@@ -1,0 +1,14 @@
+{
+  "name": "Roni Michaeli — AI-Native Full-Stack Developer",
+  "short_name": "Roni Michaeli",
+  "description": "Portfolio of Roni Michaeli — AI products, ML models and polished web & mobile experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

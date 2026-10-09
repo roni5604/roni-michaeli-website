@@ -1,0 +1,32 @@
+---
+title: Company Voting on the Blockchain
+tagline: Tamper-proof company votes and treasury management with smart contracts.
+summary: A decentralised voting platform in Solidity and Hardhat with manager and customer roles, vote creation and closing, company funds and withdrawal requests — connected to a React front end through MetaMask.
+year: '2024'
+order: 10
+category: Web & Apps
+role: Developer — smart contracts and front end
+stack: [Solidity, Hardhat, Ethers.js, React, MetaMask, Ganache]
+highlights:
+  - Role-based access — managers and customers
+  - Create, join and close votes on-chain
+  - Company funds with withdrawal requests and events
+cover: ../../assets/projects/blockchain-voting/cover.jpg
+coverAlt: Illustration of a chain of glowing blocks with lock icons above a world map
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/company-voting-system
+accent: '#60a5fa'
+---
+
+## Why a blockchain
+
+Votes inside a company only matter if everyone trusts the count. Putting them **on-chain** makes every vote transparent and immutable.
+
+## What the contract does
+
+- **Roles** — managers create and close votes; customers participate
+- **Votes** — created, joined and closed entirely on-chain
+- **Treasury** — company funds and withdrawal requests, with events such as `UserAdded`, `VoteCreated` and `FundsAdded`
+
+The React front end talks to the contract through **MetaMask**, and the whole system runs locally on Ganache for testing.

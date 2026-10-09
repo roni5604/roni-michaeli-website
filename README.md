@@ -1,16 +1,40 @@
-# React + Vite
+# ronimichaeli.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site of **Roni Michaeli** — AI-native full-stack developer.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Astro 5](https://astro.build) — static output, View Transitions between pages, content collections
+- React islands only where needed (the ⌘K command menu, animated with Motion)
+- Tailwind CSS v4 with design tokens in `src/styles/global.css`
+- GSAP + ScrollTrigger and Lenis for scroll-driven effects; a canvas "neural field" in the hero
+- Self-hosted variable fonts (Inter, Space Grotesk, JetBrains Mono) — no third-party requests
 
-## React Compiler
+## Working on it
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static site in dist/
+npm run check     # type-check .astro / .ts files
+```
 
-## Expanding the ESLint configuration
+## Adding a project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Create `src/content/projects/<slug>.mdx` with the frontmatter used by the other files
+(title, tagline, summary, year, order, category, stack, cover, …) and put its images in
+`src/assets/projects/<slug>/`. The schema in `src/content.config.ts` validates every field,
+and the project automatically appears on the home page (if `featured: true`), on `/projects`,
+in the command menu and in the sitemap.
+
+## Deploys
+
+- Push to `main` → `.github/workflows/deploy.yml` builds and publishes to GitHub Pages
+  (custom domain in `public/CNAME`).
+- Push to any other branch → `.github/workflows/preview.yml` builds it, runs an axe-core
+  accessibility scan, takes screenshots and publishes the results to the `ci-preview` branch.
+
+## Accessibility & privacy
+
+Built to WCAG 2.2 AA / IS 5568, with a reduce-motion switch, full keyboard support and no
+tracking. See `/accessibility` and `/privacy` on the live site.

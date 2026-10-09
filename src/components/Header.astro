@@ -1,0 +1,98 @@
+---
+import { nav, site } from '../data/site';
+---
+
+<header
+  data-header
+  transition:persist="header"
+  class="group/header fixed inset-x-0 top-0 z-50 transition-[padding] duration-500 [&.is-scrolled]:py-2 py-4"
+>
+  <div class="container-x">
+    <nav
+      aria-label="Primary"
+      class="flex items-center justify-between gap-4 rounded-full border border-transparent px-3 py-2 transition-all duration-500 group-[.is-scrolled]/header:glass group-[.is-scrolled]/header:shadow-[0_10px_40px_-15px_rgb(0_0_0/0.8)]"
+    >
+      <a href="/" class="group flex items-center gap-3 rounded-full pr-2" aria-label="Roni Michaeli — home">
+        <span
+          class="relative grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-cyan via-violet to-pink font-display text-sm font-bold text-bg"
+          aria-hidden="true">RM</span
+        >
+        <span class="hidden font-display text-sm font-semibold tracking-tight sm:block">
+          Roni Michaeli<span class="text-cyan">.</span>
+        </span>
+      </a>
+
+      <ul class="hidden items-center gap-1 md:flex">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                data-nav-link
+                class="relative rounded-full px-4 py-2 text-sm text-muted transition-colors hover:text-ink aria-[current]:text-ink aria-[current]:after:absolute aria-[current]:after:inset-x-4 aria-[current]:after:-bottom-0.5 aria-[current]:after:h-px aria-[current]:after:bg-cyan"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          data-palette-open
+          class="hidden items-center gap-2 rounded-full border border-line px-3 py-2 text-xs text-muted transition-colors hover:border-line-strong hover:text-ink sm:inline-flex"
+          aria-label="Open command menu"
+          aria-keyshortcuts="Control+K Meta+K"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+            ><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg
+          >
+          <span>Search</span>
+          <kbd class="rounded border border-line px-1.5 font-mono text-[10px]">⌘K</kbd>
+        </button>
+        <a href={site.cv} target="_blank" rel="noopener" class="btn btn-primary hidden !py-2 !px-4 md:inline-flex" data-magnetic="0.2">
+          CV
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+            ><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"></path></svg
+          >
+          <span class="sr-only">(PDF, opens in a new tab)</span>
+        </a>
+        <button
+          type="button"
+          data-menu-toggle
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          class="grid h-10 w-10 place-items-center rounded-full border border-line md:hidden"
+        >
+          <span class="sr-only">Menu</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+            ><path d="M4 7h16M4 12h16M4 17h10"></path></svg
+          >
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" hidden class="glass mt-3 rounded-3xl p-3 md:hidden">
+      <ul class="grid gap-1">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="block rounded-2xl px-4 py-3 font-display text-lg hover:bg-surface-2">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/projects" class="block rounded-2xl px-4 py-3 font-display text-lg hover:bg-surface-2">All projects</a>
+        </li>
+        <li class="flex gap-2 p-2">
+          <a href={site.cv} target="_blank" rel="noopener" class="btn btn-primary flex-1">Download CV</a>
+          <button type="button" data-palette-open class="btn btn-ghost">Search</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

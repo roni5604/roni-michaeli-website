@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/home/Hero.astro';
+import About from '../components/home/About.astro';
+import Work from '../components/home/Work.astro';
+import Marquee from '../components/home/Marquee.astro';
+import AIFocus from '../components/home/AIFocus.astro';
+import Journey from '../components/home/Journey.astro';
+import Faq from '../components/home/Faq.astro';
+import Contact from '../components/home/Contact.astro';
+import { faqs, site } from '../data/site';
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  author: { '@id': `${site.url}/#person` },
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Base type="profile" jsonLd={[website, faqLd]}>
+  <Hero />
+  <Work />
+  <Marquee />
+  <About />
+  <AIFocus />
+  <Journey />
+  <Faq />
+  <Contact />
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="This page doesn’t exist." noindex>
+  <section class="relative grid min-h-[90svh] place-items-center overflow-hidden px-5 pt-28 text-center">
+    <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <canvas data-neural class="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000" aria-hidden="true"></canvas>
+    <div class="relative">
+      <p class="font-mono text-sm text-cyan">error: route not found</p>
+      <h1 class="mt-4 font-display text-[clamp(6rem,22vw,16rem)] leading-none font-bold">
+        <span class="sr-only">404 — page not found</span>
+        <span aria-hidden="true" class="text-gradient" data-scramble="404">404</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-md text-lg text-muted">Even the best model hallucinates sometimes. This page doesn’t exist — but plenty of good ones do.</p>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn btn-primary" data-magnetic>Take me home</a>
+        <a href="/projects" class="btn btn-ghost">Browse projects</a>
+        <button type="button" data-palette-open class="btn btn-ghost">Search (⌘K)</button>
+      </div>
+    </div>
+  </section>
+</Base>

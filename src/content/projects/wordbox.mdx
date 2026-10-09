@@ -1,0 +1,52 @@
+---
+title: Find the Word
+tagline: A Hebrew word game for iPhone, Android and the web — from one codebase.
+summary: Boggle-style Hebrew word puzzle with a growing board, five themed worlds, bots, hints and a detective-dog mascot. Built with Flutter and Firebase, with AI agents in the development loop.
+year: '2026'
+order: 1
+category: Games
+featured: true
+role: Solo developer — design, code, content pipeline
+stack: [Flutter, Dart, Firebase Auth, Cloud Firestore, GitHub Actions, AI coding agents]
+highlights:
+  - One Flutter codebase ships to iOS, Android and a public web build
+  - Solvable boards generated automatically from a curated Hebrew dictionary
+  - Smart final-letter handling — the board shows ך/ם/ן/ף/ץ as regular letters, the result is always grammatical
+  - Local multiplayer race against 2–4 bots with adjustable difficulty
+  - Google, Facebook, Apple, email and guest sign-in
+cover: ../../assets/projects/wordbox/cover.jpg
+coverAlt: Find the Word game board — a 3×3 grid of rounded Hebrew letter tiles on a warm orange gradient
+gallery:
+  - src: ../../assets/projects/wordbox/campaign-map.jpg
+    alt: Campaign map with a winding path of level nodes
+    caption: The campaign map — levels grow from 3×3 to 7×7 across five worlds.
+  - src: ../../assets/projects/wordbox/icon.jpg
+    alt: The Find the Word app icon with glossy Hebrew letter tiles
+    caption: App icon — candy-style tiles that set the visual language of the whole game.
+live: https://roni5604.github.io/WordboxGame/
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/WordboxGame
+accent: '#f472b6'
+---
+
+## The idea
+
+Word games in Hebrew are rare, and the good ones rarely respect the language. **Find the Word** connects neighbouring letters — horizontally, vertically or diagonally — on a board that grows level by level, from a gentle 3×3 up to a challenging 7×7.
+
+## How it's built
+
+The game is a single **Flutter** codebase that runs identically on iPhone, Android and the web. Every push to `main` runs analysis and tests, then publishes the web build automatically — so the public link is always the latest version.
+
+Boards aren't hand-made. A generator places letters so that each board is **guaranteed to be solvable** against a curated Hebrew dictionary — the same dictionary that later became the open [hebrew-words-db](/projects/hebrew-words-db) dataset.
+
+## Details that matter
+
+- **Final letters done right.** Hebrew has five letters with a different form at the end of a word. The board always shows the regular form to avoid visual noise, and the engine converts to the final form in the found word.
+- **A reason to come back.** Stars, coins, a daily hint bonus that grows over a week, and a shop for extra hints.
+- **Zoe the detective dog** guides new players through an interactive tutorial with animated demos.
+- **Full RTL and accessibility** across the interface, set in the Heebo typeface.
+
+## Built AI-native
+
+I developed the game with AI coding agents as part of the workflow — specs and design docs first, then implementation, with static analysis and tests in CI keeping every change honest.

@@ -1,0 +1,141 @@
+---
+import { aiPillars } from '../../data/site';
+
+const flow = [
+  { k: 'Spec', d: 'Clear goal, constraints and acceptance tests' },
+  { k: 'Agents', d: 'AI pair-programmers implement in small steps' },
+  { k: 'Tests & CI', d: 'Analysis, tests and builds on every push' },
+  { k: 'Review', d: 'I read every diff — taste and judgement stay human' },
+  { k: 'Ship', d: 'Automatic deploys, live in minutes' },
+];
+---
+
+<section id="ai" class="relative overflow-hidden py-28 md:py-36" aria-labelledby="ai-title">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgb(167_139_250/0.12),transparent_60%)]" aria-hidden="true"></div>
+  <div class="container-x relative">
+    <p class="eyebrow" data-reveal>AI focus</p>
+    <div class="mt-5 grid gap-8 lg:grid-cols-2 lg:items-end">
+      <h2 id="ai-title" class="text-4xl font-semibold md:text-6xl" data-split>AI is both what I build and how I build.</h2>
+      <p class="max-w-xl text-lg text-muted lg:justify-self-end" data-reveal style="--d:1">
+        I treat models, prompts and agents as engineering materials — with the same discipline as any other code: specs, tests, measurement and review.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-5 md:grid-cols-3">
+      {
+        aiPillars.map((p, i) => (
+          <article data-reveal style={`--d:${i + 1}`} class="spot-card glass group flex flex-col rounded-3xl p-7">
+            <div class="relative z-[2] flex h-full flex-col">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-faint">{p.kicker}</span>
+                <span class="ai-icon grid h-14 w-14 place-items-center rounded-2xl border border-line bg-bg-2" aria-hidden="true">
+                  {p.id === 'llm' && (
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="text-cyan">
+                      <path d="M4 5h16v11H8l-4 4V5Z" />
+                      <path class="ai-dots" d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01" stroke-width="2.6" stroke-linecap="round" />
+                    </svg>
+                  )}
+                  {p.id === 'agentic' && (
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="text-violet">
+                      <path d="m8 9-3 3 3 3M16 9l3 3-3 3" />
+                      <path class="ai-spin" d="M13.5 6 10.5 18" />
+                    </svg>
+                  )}
+                  {p.id === 'ml' && (
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="text-pink">
+                      <circle cx="5" cy="7" r="1.6" />
+                      <circle cx="5" cy="17" r="1.6" />
+                      <circle class="ai-node" cx="12" cy="12" r="2" />
+                      <circle cx="19" cy="7" r="1.6" />
+                      <circle cx="19" cy="17" r="1.6" />
+                      <path d="M6.4 7.8 10.3 11M6.4 16.2l3.9-3.2M13.7 11l3.9-3.2M13.7 13l3.9 3.2" />
+                    </svg>
+                  )}
+                </span>
+              </div>
+              <h3 class="mt-8 font-display text-2xl font-semibold">{p.title}</h3>
+              <p class="mt-3 leading-relaxed text-muted">{p.body}</p>
+              <ul class="mt-6 flex flex-wrap gap-2 pt-2">
+                {p.points.map((pt) => (
+                  <li class="chip">{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- How I ship with AI -->
+    <div class="mt-20" data-reveal>
+      <h3 class="font-display text-xl font-semibold">How I ship with AI agents</h3>
+      <div class="relative mt-10">
+        <span class="flow-beam pointer-events-none absolute -top-4 left-0 hidden h-px w-full md:block" aria-hidden="true"></span>
+      <ol class="flow grid gap-4 md:grid-cols-5">
+        {
+          flow.map((s, i) => (
+            <li class="relative rounded-2xl border border-line bg-bg-2/70 p-5">
+              <span class="font-mono text-[11px] text-cyan">{String(i + 1).padStart(2, '0')}</span>
+              <p class="mt-2 font-display text-lg font-semibold">{s.k}</p>
+              <p class="mt-1 text-sm text-muted">{s.d}</p>
+            </li>
+          ))
+        }
+      </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow-beam {
+    background: linear-gradient(90deg, transparent, var(--color-cyan), var(--color-violet), transparent);
+    background-size: 30% 100%;
+    background-repeat: no-repeat;
+    animation: beam 3.6s linear infinite;
+  }
+  @keyframes beam {
+    from {
+      background-position: -40% 0;
+    }
+    to {
+      background-position: 140% 0;
+    }
+  }
+  .ai-dots {
+    animation: blink 1.4s steps(3) infinite;
+  }
+  @keyframes blink {
+    0% {
+      stroke-dasharray: 0.01 40;
+    }
+    100% {
+      stroke-dasharray: 0.01 3.5;
+    }
+  }
+  .ai-spin {
+    transform-origin: 12px 12px;
+    animation: tilt 3s ease-in-out infinite;
+  }
+  @keyframes tilt {
+    50% {
+      transform: rotate(18deg);
+    }
+  }
+  .ai-node {
+    transform-origin: 12px 12px;
+    animation: pulse-node 2s ease-in-out infinite;
+  }
+  @keyframes pulse-node {
+    50% {
+      transform: scale(1.35);
+      fill: currentColor;
+    }
+  }
+  :global(html.reduce-motion) .flow-beam,
+  :global(html.reduce-motion) .ai-dots,
+  :global(html.reduce-motion) .ai-spin,
+  :global(html.reduce-motion) .ai-node {
+    animation: none;
+  }
+</style>

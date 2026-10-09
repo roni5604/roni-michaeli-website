@@ -1,0 +1,35 @@
+---
+title: Lunar Landing Simulation
+tagline: PID control that lands a spacecraft softly — inspired by the Beresheet mission.
+summary: A 2D lunar-descent simulation with PID-controlled vertical speed, dynamic angle targeting and braking logic, logging full telemetry to CSV and Excel.
+year: '2025'
+order: 12
+category: Simulation
+role: Developer — physics, control and analysis
+stack: [Python, NumPy, Matplotlib, Pandas, PID control]
+highlights:
+  - Target vertical speed eases from 25 m/s to 3 m/s as altitude drops
+  - Tilt angle reduced from 60° to 0° approaching the landing site
+  - Full telemetry exported for analysis
+cover: ../../assets/projects/lunar-landing/cover.jpg
+coverAlt: Deep star field
+gallery:
+  - src: ../../assets/projects/lunar-landing/telemetry.jpg
+    alt: Charts of altitude and speed over time during the simulated descent
+    caption: Telemetry from a full simulated descent — altitude, horizontal and vertical speed.
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/BereshitSimulation
+accent: '#c4b5fd'
+---
+
+## The challenge
+
+Israel's Beresheet lander crashed on the Moon in 2019. This simulation asks: **what control logic would have landed it?**
+
+## Approach
+
+- A **PID controller** holds vertical speed to a target that shrinks with altitude.
+- The spacecraft's **angle** is steered from 60° toward 0° as it closes in on the target.
+- Extra **horizontal braking** kicks in below 3,000 m.
+- Every step is logged — time, altitude, speeds, angle, fuel and throttle — and exported for analysis.

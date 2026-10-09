@@ -1,0 +1,54 @@
+---
+import { faqs } from '../../data/site';
+---
+
+<section id="faq" class="relative py-28 md:py-32" aria-labelledby="faq-title">
+  <div class="container-x max-w-4xl">
+    <p class="eyebrow" data-reveal>FAQ</p>
+    <h2 id="faq-title" class="mt-5 text-4xl font-semibold md:text-5xl" data-split>Questions recruiters ask me.</h2>
+    <div class="mt-12 divide-y divide-line border-y border-line">
+      {
+        faqs.map((f, i) => (
+          <details class="faq group" data-reveal style={`--d:${i % 3}`} name="faq">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-medium md:text-xl [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line transition-transform duration-500 group-open:rotate-45 group-open:border-cyan group-open:text-cyan"
+                aria-hidden="true"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              <p class="max-w-2xl pb-7 leading-relaxed text-muted">{f.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Smooth open/close using modern CSS (interpolate-size + ::details-content) where supported. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq {
+      interpolate-size: allow-keywords;
+    }
+    .faq::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.5s var(--ease-out-expo),
+        content-visibility 0.5s allow-discrete;
+    }
+    .faq[open]::details-content {
+      block-size: auto;
+    }
+  }
+  :global(html.reduce-motion) .faq::details-content {
+    transition: none;
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site';
+---
+
+<Page
+  title="Accessibility statement"
+  eyebrow="Accessibility"
+  description="Accessibility statement for ronimichaeli.com — WCAG 2.2 AA and Israeli Standard IS 5568."
+  updated={site.updated}
+>
+  <p>
+    I want everyone to be able to use this site — whatever device, browser or assistive technology they use. The site was designed and built to meet
+    the <strong>Web Content Accessibility Guidelines (WCAG) 2.2, level AA</strong>, which is also the basis of Israeli Standard
+    <strong>IS 5568</strong> and the Equal Rights for Persons with Disabilities (Service Accessibility Adjustments) Regulations, 2013.
+  </p>
+
+  <h2>What’s in place</h2>
+  <ul>
+    <li><strong>Keyboard access</strong> to everything — navigation, project gallery, image viewer and command menu (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd>).</li>
+    <li>A <strong>“Skip to content”</strong> link as the first item on every page, and a clearly visible focus outline.</li>
+    <li><strong>Semantic structure</strong> — landmarks, a logical heading order and labelled navigation regions.</li>
+    <li><strong>Text alternatives</strong> for every meaningful image; decorative images are hidden from screen readers.</li>
+    <li><strong>Colour contrast</strong> of at least 4.5:1 for body text, checked automatically on every build.</li>
+    <li>
+      <strong>Motion control</strong> — the site respects your system’s “reduce motion” setting, and the <strong>Reduce motion</strong> switch in the
+      footer turns off smooth scrolling, animations and the animated background on demand.
+    </li>
+    <li><strong>Responsive and zoomable</strong> layouts that work at 200% zoom and on small screens, in portrait and landscape.</li>
+    <li>Links that open in a new tab say so to screen-reader users.</li>
+    <li>No accessibility “overlay” widgets — accessibility is built into the code itself.</li>
+  </ul>
+
+  <h2>Testing</h2>
+  <p>
+    Each version is checked with automated tools (axe-core) for WCAG 2.2 A/AA issues, and reviewed manually with keyboard-only navigation in current
+    versions of Chrome, Safari and Firefox on desktop and mobile.
+  </p>
+
+  <h2>Known limitations</h2>
+  <ul>
+    <li>Some project images are screenshots or charts; their key information is also described in the text of each project page.</li>
+    <li>Linked external sites and live products are not covered by this statement.</li>
+  </ul>
+
+  <h2>Contact for accessibility</h2>
+  <p>
+    If you encounter any barrier, or need information in another format, please contact me and I’ll do my best to help quickly:
+  </p>
+  <ul>
+    <li>Accessibility coordinator: {site.name}</li>
+    <li>Email: <a data-email={site.emailParts.join('|')} href="/#contact"><span data-email-text>{site.emailParts[0]} [at] {site.emailParts[1]}</span></a></li>
+    <li>WhatsApp: <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">+972 54-439-6677</a></li>
+  </ul>
+  <p>Please include the page address and a short description of the problem.</p>
+</Page>

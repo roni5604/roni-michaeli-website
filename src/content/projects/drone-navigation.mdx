@@ -1,0 +1,46 @@
+---
+title: Autonomous Drone Navigation
+tagline: Sensor-driven drones that map, avoid obstacles and fly home — in 2D and then 3D.
+summary: Navigation algorithms for a simulated drone with distance sensors — obstacle-risk estimation, autonomous exploration and return-home — first in a 2D simulator, then extended to a full 3D environment.
+year: '2024'
+order: 5
+category: Simulation
+featured: true
+role: Co-developer — algorithms, sensors and simulation
+stack: [Python, Pygame, Java, Path planning, Sensor modelling]
+highlights:
+  - Risk scoring from simulated distance sensors, including up and down in 3D
+  - Autonomous exploration with return-home on low battery
+  - Switchable sensor configurations and live field-of-view rendering
+cover: ../../assets/projects/drone-navigation/cover.jpg
+coverAlt: Illustration of a drone flying between city towers with navigation overlays
+gallery:
+  - src: ../../assets/projects/drone-navigation/floor-1.jpg
+    alt: Top-down 3D simulator view of the drone inside a cave-like map with sensor readings
+    caption: The 3D simulator — the drone explores a map while its sensors report distances.
+  - src: ../../assets/projects/drone-navigation/floor-2.jpg
+    alt: First-person 3D view with obstacles and red sensor rays
+    caption: Sensor rays sweeping for obstacles in the 3D view.
+  - src: ../../assets/projects/drone-navigation/on-the-way-where-am-i.jpg
+    alt: Two maze maps showing the drone's position
+    caption: “Where am I” — localisation on the maze maps.
+links:
+  - label: 3D simulator
+    url: https://github.com/roni5604/Drone_Simulator_final_project
+  - label: 2D simulator
+    url: https://github.com/roni5604/Model_2D_drone_simulator
+accent: '#34d399'
+---
+
+## From 2D to 3D
+
+The first version moved a drone on a plane with simple sensor models and platform search. Going 3D meant rethinking almost everything:
+
+- **Movement** in a full volume, not a plane
+- **Sensors** that see above and below, not just around
+- **Autonomy** that weighs vertical risk as well as horizontal
+- **Visualisation** that makes the drone's view understandable
+
+## How it decides
+
+The drone casts rays to simulate its sensors, scores the **risk** of each direction — including up and down — and chooses a safe heading. It explores autonomously and **returns home** to recharge.

@@ -1,0 +1,86 @@
+---
+import { site, nav } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="relative z-[1] overflow-hidden border-t border-line" aria-labelledby="footer-title">
+  <div
+    class="pointer-events-none absolute inset-x-0 -top-40 mx-auto h-80 max-w-4xl rounded-full bg-gradient-to-r from-cyan/20 via-violet/20 to-pink/20 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-x relative py-20">
+    <h2 id="footer-title" class="sr-only">Site footer</h2>
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <p class="font-display text-3xl font-semibold tracking-tight md:text-4xl">
+          Building intelligent products,<br />
+          <span class="text-gradient">end to end.</span>
+        </p>
+        <p class="mt-4 max-w-sm text-sm text-muted">{site.role} based in {site.location}. {site.status}.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" class="btn btn-ghost !py-2 text-xs">
+            WhatsApp <span class="sr-only">(opens in a new tab)</span>
+          </a>
+          <a data-email={site.emailParts.join('|')} href="/#contact" class="btn btn-ghost !py-2 text-xs">Email</a>
+          <a href={site.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost !py-2 text-xs">
+            GitHub <span class="sr-only">(opens in a new tab)</span>
+          </a>
+        </div>
+      </div>
+
+      <nav aria-label="Footer">
+        <p class="font-mono text-xs tracking-[0.2em] text-faint uppercase">Explore</p>
+        <ul class="mt-4 grid gap-2 text-sm">
+          {
+            nav.map((n) => (
+              <li>
+                <a href={n.href} class="text-muted hover:text-ink">
+                  {n.label}
+                </a>
+              </li>
+            ))
+          }
+          <li><a href="/projects" class="text-muted hover:text-ink">All projects</a></li>
+          <li>
+            <a href={site.cv} target="_blank" rel="noopener" class="text-muted hover:text-ink">CV (PDF)</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <p class="font-mono text-xs tracking-[0.2em] text-faint uppercase">Site</p>
+        <ul class="mt-4 grid gap-2 text-sm">
+          <li><a href="/accessibility" class="text-muted hover:text-ink">Accessibility statement</a></li>
+          <li><a href="/privacy" class="text-muted hover:text-ink">Privacy policy</a></li>
+          <li><a href="/sitemap-index.xml" class="text-muted hover:text-ink">Sitemap</a></li>
+          <li>
+            <button
+              type="button"
+              data-motion-toggle
+              aria-pressed="false"
+              class="group inline-flex items-center gap-3 text-muted hover:text-ink"
+            >
+              <span
+                class="relative h-5 w-9 rounded-full border border-line-strong transition-colors group-aria-pressed:border-cyan group-aria-pressed:bg-cyan/20"
+                aria-hidden="true"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 h-3.5 w-3.5 rounded-full bg-muted transition-transform group-aria-pressed:translate-x-4 group-aria-pressed:bg-cyan"
+                ></span>
+              </span>
+              Reduce motion
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {site.name}. All rights reserved.</p>
+      <p>
+        Built with Astro, React &amp; a lot of AI pair-programming · <kbd class="rounded border border-line px-1 font-mono">⌘K</kbd> to explore
+      </p>
+    </div>
+  </div>
+</footer>

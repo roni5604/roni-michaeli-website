@@ -1,0 +1,148 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette';
+import { site, nav } from '../data/site';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  image = '/og.jpg',
+  type = 'website',
+  jsonLd = [],
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site).href;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site.url}/#person`,
+  name: site.name,
+  url: site.url,
+  image: `${site.url}/og.jpg`,
+  jobTitle: site.role,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Ariel University' },
+  knowsAbout: ['Artificial intelligence', 'Large language models', 'Machine learning', 'Full-stack development', 'React', 'Python'],
+  address: { '@type': 'PostalAddress', addressCountry: 'IL' },
+  sameAs: [site.github],
+};
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const paletteItems = [
+  ...nav.map((n) => ({ group: 'Navigate', label: n.label, href: n.href, hint: 'Section' })),
+  { group: 'Navigate', label: 'All projects', href: '/projects', hint: 'Page' },
+  ...projects.map((p) => ({ group: 'Projects', label: p.data.title, href: `/projects/${p.id}`, hint: p.data.category })),
+  ...projects
+    .filter((p) => p.data.live)
+    .map((p) => ({ group: 'Live sites', label: `Open ${p.data.title}`, href: p.data.live!, hint: 'External', external: true })),
+  { group: 'Contact', label: 'Download CV (PDF)', href: site.cv, hint: 'PDF', external: true },
+  { group: 'Contact', label: 'WhatsApp', href: site.whatsapp, hint: 'External', external: true },
+  { group: 'Contact', label: 'GitHub', href: site.github, hint: 'External', external: true },
+  { group: 'Site', label: 'Accessibility statement', href: '/accessibility', hint: 'Page' },
+  { group: 'Site', label: 'Privacy policy', href: '/privacy', hint: 'Page' },
+];
+
+const pageAnim = {
+  forwards: {
+    old: { name: 'rm-page-out', duration: '0.45s', easing: 'cubic-bezier(0.7, 0, 0.84, 0)', fillMode: 'both' },
+    new: { name: 'rm-page-in', duration: '0.8s', easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fillMode: 'both', delay: '0.15s' },
+  },
+  backwards: {
+    old: { name: 'rm-page-out-back', duration: '0.45s', easing: 'cubic-bezier(0.7, 0, 0.84, 0)', fillMode: 'both' },
+    new: { name: 'rm-page-in-back', duration: '0.8s', easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fillMode: 'both', delay: '0.15s' },
+  },
+};
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline data-astro-rerun>
+      (function () {
+        var d = document.documentElement, p = null;
+        d.classList.add('js');
+        try { p = localStorage.getItem('rm-motion'); } catch (e) {}
+        var r = p ? p === 'reduce' : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.toggle('reduce-motion', r);
+      })();
+    </script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="author" content={site.name} />
+    <meta name="theme-color" content="#05070d" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify([person, ...jsonLd])} />
+
+    <ClientRouter fallback="animate" />
+  </head>
+  <body class="grain min-h-dvh">
+    <a
+      href="#main"
+      class="sr-only z-[100] rounded-full bg-ink px-5 py-3 font-semibold text-bg focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+      >Skip to content</a
+    >
+    <div class="scroll-progress" aria-hidden="true" transition:persist="progress"></div>
+    <div class="cursor-glow" aria-hidden="true" transition:persist="cursor"></div>
+
+    <Header />
+
+    <main id="main" tabindex="-1" class="relative z-[1] outline-none" transition:animate={pageAnim}>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <CommandPalette client:idle items={paletteItems} transition:persist="palette" />
+
+    <script>
+      import '../scripts/effects';
+    </script>
+  </body>
+</html>

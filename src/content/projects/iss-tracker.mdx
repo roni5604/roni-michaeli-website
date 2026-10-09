@@ -1,0 +1,28 @@
+---
+title: ISS Real-Time Tracker
+tagline: Live orbital tracking of the International Space Station, streamed into Google Earth.
+summary: Final project for Ariel University's space-engineering course — tracks the ISS from live TLE data, simulates its camera view in Google Earth and steers attitude toward ground targets, with energy and 3D attitude dashboards.
+year: '2025'
+order: 8
+category: Simulation
+role: Co-developer — orbital model, targeting and GUIs
+stack: [Python, Skyfield, Flask, KML, Tkinter, PySide6, PyQtGraph]
+highlights:
+  - Live ISS position from Celestrak TLE data
+  - Google Earth camera view streamed as dynamic KML
+  - Dynamic targeting — heading and tilt lock onto ground targets
+  - Energy and 3D attitude dashboards
+cover: ../../assets/projects/iss-tracker/cover.jpg
+coverAlt: Chart of several ISS ground-track orbits across longitude and latitude with a highlighted ground target
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/satellite-feed
+accent: '#38bdf8'
+---
+
+## What it does
+
+- **Tracks** the ISS in real time using Skyfield and live TLE data.
+- **Shows** what its camera would see, by streaming KML into Google Earth every few seconds.
+- **Two modes** — a static north-down view, and dynamic targeting where the station locks onto ground targets and adjusts heading and tilt.
+- **Dashboards** — a Tkinter simulation GUI for rates and energy use, and a PySide6 3D viewer for attitude.

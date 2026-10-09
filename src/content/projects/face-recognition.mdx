@@ -1,0 +1,36 @@
+---
+title: Real-Time Emotion Recognition
+tagline: A CNN that reads facial expressions live from a webcam — wrapped in a friendly desktop app.
+summary: Deep-learning model built with TensorFlow and Keras that classifies seven emotions in real time, with a PySide6 interface for live detection, session capture and evaluation.
+year: '2024'
+order: 4
+category: AI & ML
+featured: true
+role: Developer — data, model, training and GUI
+stack: [Python, TensorFlow, Keras, OpenCV, PySide6, NumPy]
+highlights:
+  - Seven emotion classes detected live from the webcam
+  - End-to-end pipeline — dataset download, preparation, training, evaluation
+  - Desktop GUI that saves sessions and correctly classified examples
+cover: ../../assets/projects/face-recognition/cover.jpg
+coverAlt: Illustration of a wireframe human head surrounded by data overlays
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/face_recognition_model
+accent: '#38bdf8'
+---
+
+## Goal
+
+Detect and classify human emotions from facial expressions — **in real time**, from an ordinary webcam, through an interface anyone can use.
+
+## Pipeline
+
+1. **Dataset** — scripted download and preparation of a public facial-expression dataset.
+2. **Model** — a convolutional neural network built with TensorFlow / Keras.
+3. **Training & evaluation** — dedicated scripts with reproducible metrics.
+4. **Application** — a PySide6 (Qt) desktop app with live detection that saves each session and the frames it classified correctly.
+
+## Related
+
+I later benchmarked five different approaches on the same problem — from a majority-class baseline to an augmented CNN — in [Expression Model Benchmark](/projects/expression-benchmark).
