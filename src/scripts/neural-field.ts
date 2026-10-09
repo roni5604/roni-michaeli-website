@@ -90,7 +90,7 @@ export function startNeuralField(canvas: HTMLCanvasElement): () => void {
         const dy = a.y - b.y;
         const d2 = dx * dx + dy * dy;
         if (d2 < link2) {
-          const alpha = (1 - d2 / link2) * 0.32;
+          const alpha = (1 - d2 / link2) * 0.22;
           const c = COLORS[a.hue];
           ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
           ctx.beginPath();

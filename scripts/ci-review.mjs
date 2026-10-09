@@ -115,7 +115,15 @@ for (const v of views) {
   const page = await ctx.newPage();
   for (const path of shotPages) {
     await page.goto(base + path, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(300);
+    // Scroll through so lazy images load before the full-page capture.
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += 600) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 60));
+      }
+      window.scrollTo(0, 0);
+    });
+    await page.waitForTimeout(500);
     const name = (path === '/' ? 'home' : path.replace(/^\//, '').replace(/[/.]/g, '_')) + `-${v.name}.jpg`;
     await page.screenshot({ path: join(out, 'shots', name), fullPage: true, type: 'jpeg', quality: 70 });
   }
@@ -167,7 +175,7 @@ for (const [slug, url] of Object.entries(live)) {
     const ctx = await browser.newContext({ viewport: { width: v.width, height: v.height }, deviceScaleFactor: v.scale, isMobile: v.name === 'mobile' });
     const page = await ctx.newPage();
     try {
-      const resp = await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+      const resp = await page.goto(url, { waitUntil: 'load', timeout: 60000 });
       await page.waitForTimeout(slug === 'wordbox' || slug === 'card-games' ? 9000 : 2500);
       await page.screenshot({ path: join(out, 'live', `${slug}-${v.name}.png`) });
       summary.live[`${slug}-${v.name}`] = resp ? resp.status() : 'no response';

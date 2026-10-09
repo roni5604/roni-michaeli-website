@@ -573,7 +573,11 @@ function teardown() {
 }
 
 document.addEventListener('astro:page-load', init);
-document.addEventListener('astro:before-swap', teardown);
+document.addEventListener('astro:before-swap', () => {
+  teardown();
+  // Recreated on the next page so it starts from that page's scroll position.
+  stopLenis();
+});
 // The swap replaces <html> attributes, so restore our classes straight away
 // (before paint) to avoid a flash of hidden reveal content.
 document.addEventListener('astro:after-swap', applyHtmlClasses);

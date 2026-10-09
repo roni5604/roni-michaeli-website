@@ -32,7 +32,7 @@ import roni from '../../assets/roni.jpg';
       </article>
 
       <!-- Portrait crop -->
-      <figure data-reveal style="--d:1" class="spot-card group relative overflow-hidden rounded-3xl border border-line md:col-span-2 md:row-span-2">
+      <figure data-reveal style="--d:1" class="spot-card group relative hidden overflow-hidden rounded-3xl border border-line md:col-span-2 md:row-span-2 md:block">
         <Image
           src={roni}
           widths={[360, 560, 760]}
@@ -48,16 +48,16 @@ import roni from '../../assets/roni.jpg';
 
       <!-- Stats -->
       <div data-reveal style="--d:2" class="glass grid grid-cols-3 divide-x divide-line rounded-3xl md:col-span-3">
-        <div class="p-6 text-center">
-          <p class="font-display text-4xl font-bold text-gradient">B.Sc.</p>
+        <div class="p-4 text-center sm:p-6">
+          <p class="font-display text-3xl font-bold text-gradient sm:text-4xl">B.Sc.</p>
           <p class="mt-1 text-xs tracking-wider text-faint uppercase">CS &amp; Maths</p>
         </div>
-        <div class="p-6 text-center">
-          <p class="font-display text-4xl font-bold"><span data-count="4" data-suffix="">4</span></p>
+        <div class="p-4 text-center sm:p-6">
+          <p class="font-display text-3xl font-bold sm:text-4xl"><span data-count="4" data-suffix="">4</span></p>
           <p class="mt-1 text-xs tracking-wider text-faint uppercase">Years ops-room</p>
         </div>
-        <div class="p-6 text-center">
-          <p class="font-display text-4xl font-bold"><span data-count="10" data-suffix="+">10+</span></p>
+        <div class="p-4 text-center sm:p-6">
+          <p class="font-display text-3xl font-bold sm:text-4xl"><span data-count="10" data-suffix="+">10+</span></p>
           <p class="mt-1 text-xs tracking-wider text-faint uppercase">Languages &amp; stacks</p>
         </div>
       </div>
