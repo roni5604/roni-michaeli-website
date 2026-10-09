@@ -82,7 +82,7 @@
 
 /* ---------- Utilities usable with variants ---------- */
 @utility glass {
-  background: linear-gradient(180deg, rgb(17 26 46 / 0.72), rgb(12 18 34 / 0.6));
+  background: linear-gradient(180deg, rgb(17 26 46 / 0.9), rgb(12 18 34 / 0.86));
   border-color: var(--color-line);
   border-width: 1px;
   border-style: solid;
