@@ -118,6 +118,10 @@ const files = [
     text-align: right;
     color: rgb(129 144 166 / 0.55);
   }
+  /* lift the theme's dim comment colour to meet WCAG AA contrast */
+  .code-window :global([style*='#51597D' i]) {
+    color: #8e97bf !important;
+  }
   :global(html.js:not(.reduce-motion)) [data-code-reveal] :global(.line) {
     opacity: 0;
     translate: -8px 0;

@@ -11,7 +11,7 @@ import CodeWindow from '../CodeWindow.astro';
       Computer scientist. Hands-on coder. AI specialist.
     </h2>
 
-    <div class="mt-16 grid gap-5 md:grid-cols-6">
+    <div class="mt-16 grid gap-5 md:grid-cols-6 [&>*]:min-w-0">
       <!-- Bio -->
       <article data-reveal class="spot-card glass rounded-3xl p-8 md:col-span-4 md:row-span-2" data-tilt="off">
         <div class="relative z-[2]">
@@ -53,7 +53,7 @@ import CodeWindow from '../CodeWindow.astro';
       </figure>
 
       <!-- Code window -->
-      <div data-reveal style="--d:2" class="md:col-span-4">
+      <div data-reveal style="--d:2" class="min-w-0 md:col-span-4">
         <CodeWindow />
       </div>
 

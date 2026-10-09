@@ -11,6 +11,11 @@ const liveCount = projects.filter((p) => p.data.live).length;
 <section class="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16" aria-labelledby="hero-title">
   <canvas data-binary class="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-[1500ms]" aria-hidden="true"
   ></canvas>
+  <!-- keeps text readable over the digits: strong behind the copy, clear around the portrait -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgb(5_7_13/0.82),rgb(5_7_13/0.55)_40%,rgb(5_7_13/0.15)_75%)] max-lg:bg-bg/60"
+    aria-hidden="true"
+  ></div>
   <div class="pointer-events-none absolute -top-32 -left-40 h-[36rem] w-[36rem] rounded-full bg-cyan/15 blur-[120px]" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -right-40 bottom-0 h-[34rem] w-[34rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
 

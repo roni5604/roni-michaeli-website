@@ -1,6 +1,6 @@
 # ronimichaeli.com
 
-Personal site of **Roni Michaeli** — AI-native full-stack developer.
+Personal site of **Roni Michaeli** — software developer & AI specialist.
 
 ## Stack
 
