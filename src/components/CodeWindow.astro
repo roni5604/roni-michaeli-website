@@ -13,6 +13,9 @@ function build(idea: Idea) {
 }
 
 build({ name: 'your next product', impact: Infinity });`;
+
+// Decorative only, so the block shouldn't be a keyboard stop.
+const noTabStop = [{ pre(node: any) { delete node.properties.tabindex; } }];
 ---
 
 <div
@@ -29,7 +32,7 @@ build({ name: 'your next product', impact: Infinity });`;
     <span class="font-mono text-xs text-muted">build.ts</span>
   </div>
   <div class="overflow-x-auto text-[12.5px] leading-6 md:text-[13px]" aria-hidden="true" data-code-reveal>
-    <Code code={code} lang="ts" theme="tokyo-night" />
+    <Code code={code} lang="ts" theme="tokyo-night" transformers={noTabStop} />
   </div>
 </div>
 
