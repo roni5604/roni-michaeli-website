@@ -1,100 +1,36 @@
 ---
 import { Code } from 'astro:components';
 
-// Real code from my projects (lightly trimmed), highlighted at build time.
-const files = [
-  {
-    id: 'pid',
-    name: 'pid.py',
-    project: 'Lunar Landing Simulation',
-    href: '/projects/lunar-landing',
-    lang: 'python' as const,
-    code: `class PID:
-    def __init__(self, Kp, Ki, Kd, setpoint=0.0, integral_limit=100):
-        self.Kp, self.Ki, self.Kd = Kp, Ki, Kd
-        self.setpoint = setpoint
-        self.integral = 0.0
-        self.last_error = 0.0
-        self.integral_limit = integral_limit
+// A small, generic snippet — decorative only, not taken from any project.
+const code = `type Idea = { name: string; impact: number };
 
-    def update(self, current, dt):
-        error = current - self.setpoint
-        if abs(error) < 0.01:       # close enough — don't move
-            return 0.0
-        self.integral += error * dt
-        # Anti-windup: clamp the integral term
-        self.integral = max(-self.integral_limit,
-                            min(self.integral, self.integral_limit))
-        derivative = (error - self.last_error) / dt if dt > 0 else 0.0
-        self.last_error = error
-        return self.Kp * error + self.Ki * self.integral + self.Kd * derivative`,
-  },
-  {
-    id: 'pose',
-    name: 'pose.py',
-    project: 'Marker Pose from Video',
-    href: '/projects/aruco-detection',
-    lang: 'python' as const,
-    code: `def calculate_pose_and_distance(corners):
-    """Distance and yaw / pitch / roll of a detected ArUco marker."""
-    rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(
-        corners, ARUCO_MARKER_SIZE, CAMERA_MATRIX, DISTORTION_COEFFICIENTS)
+function build(idea: Idea) {
+  const plan = design(idea);
+  const product = code(plan);
 
-    distance = np.linalg.norm(tvec)
-    yaw = np.degrees(np.arctan2(tvec[0][0][0], tvec[0][0][2]))
-    yaw = (yaw + 180) % 360 - 180            # normalise to [-180, 180)
+  test(product);
+  return launch(product);
+}
 
-    # rotation vector -> rotation matrix -> Euler angles
-    R, _ = cv2.Rodrigues(rvec[0][0])
-    pitch = np.degrees(np.arctan2(R[1, 0], R[0, 0]))
-    roll = np.degrees(np.arctan2(R[2, 1], R[2, 2]))
-    return distance, yaw, pitch, roll`,
-  },
-];
+build({ name: 'your next product', impact: Infinity });`;
 ---
 
-<div class="code-window overflow-hidden rounded-3xl border border-line bg-[#0a0f1c] shadow-[0_30px_80px_-30px_rgb(34_211_238/0.35)]" data-tabs>
-  <div class="flex items-center gap-4 border-b border-line bg-bg-2/80 px-4">
-    <div class="flex gap-1.5 py-4" aria-hidden="true">
+<div
+  class="code-window overflow-hidden rounded-3xl border border-line bg-[#0a0f1c] shadow-[0_30px_80px_-30px_rgb(34_211_238/0.35)]"
+  role="img"
+  aria-label="Decorative code editor window"
+>
+  <div class="flex items-center gap-4 border-b border-line bg-bg-2/80 px-4 py-3" aria-hidden="true">
+    <div class="flex gap-1.5">
       <span class="h-3 w-3 rounded-full bg-[#f87171]"></span>
       <span class="h-3 w-3 rounded-full bg-[#fbbf24]"></span>
       <span class="h-3 w-3 rounded-full bg-[#34d399]"></span>
     </div>
-    <div role="tablist" aria-label="Code samples" class="flex gap-1 overflow-x-auto">
-      {
-        files.map((f, i) => (
-          <button
-            type="button"
-            role="tab"
-            id={`tab-${f.id}`}
-            aria-controls={`panel-${f.id}`}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            tabindex={i === 0 ? 0 : -1}
-            class="rounded-t-lg border-b-2 border-transparent px-3 py-3 font-mono text-xs text-faint transition-colors hover:text-ink aria-selected:border-cyan aria-selected:text-ink"
-          >
-            {f.name}
-          </button>
-        ))
-      }
-    </div>
-    <span class="ml-auto hidden font-mono text-[10px] tracking-widest text-faint uppercase sm:block">Written by me</span>
+    <span class="font-mono text-xs text-muted">build.ts</span>
   </div>
-
-  {
-    files.map((f, i) => (
-      <div role="tabpanel" id={`panel-${f.id}`} aria-labelledby={`tab-${f.id}`} hidden={i !== 0} tabindex="0" data-code-reveal>
-        <div class="max-h-[26rem] overflow-auto text-[12.5px] leading-6 md:text-[13px]" data-lenis-prevent>
-          <Code code={f.code} lang={f.lang} theme="tokyo-night" />
-        </div>
-        <div class="flex items-center justify-between gap-3 border-t border-line px-5 py-3 text-xs text-muted">
-          <span>
-            From <a href={f.href} class="text-cyan hover:underline">{f.project}</a>
-          </span>
-          <span class="font-mono text-faint">{f.code.split('\n').length} lines · Python</span>
-        </div>
-      </div>
-    ))
-  }
+  <div class="overflow-x-auto text-[12.5px] leading-6 md:text-[13px]" aria-hidden="true" data-code-reveal>
+    <Code code={code} lang="ts" theme="tokyo-night" />
+  </div>
 </div>
 
 <style>
@@ -128,7 +64,7 @@ const files = [
     transition:
       opacity 0.5s var(--ease-out-expo),
       translate 0.5s var(--ease-out-expo);
-    transition-delay: calc(var(--i, 0) * 45ms);
+    transition-delay: calc(var(--i, 0) * 60ms);
   }
   :global(html.js:not(.reduce-motion)) [data-code-reveal].is-typed :global(.line) {
     opacity: 1;
