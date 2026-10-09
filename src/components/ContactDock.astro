@@ -8,11 +8,11 @@ const btn =
   data-dock
   aria-label="Quick contact"
   transition:persist="dock"
-  class="dock glass fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1 rounded-full p-1.5 shadow-[0_20px_60px_-15px_rgb(0_0_0/0.9)] md:right-6 md:bottom-6 md:left-auto md:translate-x-0"
+  class="dock glass fixed bottom-4 left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center gap-1 rounded-full p-1.5 shadow-[0_20px_60px_-15px_rgb(0_0_0/0.9)] md:right-6 md:bottom-6 md:left-auto md:translate-x-0"
 >
   <a href="/#contact" class="flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold whitespace-nowrap text-emerald-200 hover:bg-white/10">
     <span class="live-dot" aria-hidden="true"></span>
-    Available for work
+    <span class="min-[420px]:hidden">Available</span><span class="hidden min-[420px]:inline">Available for work</span>
   </a>
   <span class="mx-1 h-6 w-px bg-line" aria-hidden="true"></span>
   <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" class={btn} aria-label="WhatsApp (opens in a new tab)" title="WhatsApp">
