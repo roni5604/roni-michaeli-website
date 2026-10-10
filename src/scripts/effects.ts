@@ -378,7 +378,8 @@ function setupHorizontalGallery() {
   const track = section?.querySelector<HTMLElement>('[data-hscroll-track]');
   if (!section || !track) return;
   const mm = gsap.matchMedia();
-  mm.add('(min-width: 1024px) and (hover: hover)', () => {
+  // Pin only where a whole card fits on screen; otherwise native horizontal scroll.
+  mm.add('(min-width: 1024px) and (min-height: 800px) and (hover: hover)', () => {
     if (reduced()) return;
     section.classList.add('is-pinned');
     const distance = () => Math.max(0, track.scrollWidth - track.clientWidth);
