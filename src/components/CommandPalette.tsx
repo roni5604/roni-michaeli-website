@@ -87,18 +87,16 @@ export default function CommandPalette({ items }: { items: Item[] }) {
       window.open(it.href, '_blank', 'noopener');
       return;
     }
-    const url = new URL(it.href, location.href);
-    if (url.pathname === location.pathname && url.hash) {
-      document.querySelector(url.hash)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-      history.replaceState(history.state, '', url);
-      return;
-    }
-    // Let Astro's router run the page transition.
-    const a = document.createElement('a');
-    a.href = it.href;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    // Same-page sections and other pages both go through a real link click,
+    // so the site's scroll handler / Astro's router take care of them.
+    // Wait a tick so the page is unlocked (overflow restored) before scrolling.
+    setTimeout(() => {
+      const a = document.createElement('a');
+      a.href = it.href;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }, 0);
   };
 
   const onKeyDown = (e: ReactKeyboardEvent) => {

@@ -12,16 +12,17 @@ export const site = {
   whatsapp: 'https://wa.me/972544396677',
   phoneDisplay: '+972 54-439-6677',
   github: 'https://github.com/roni5604',
+  linkedin: 'https://www.linkedin.com/in/roni-michaeli-7523a5262/',
   cv: '/cv/Roni-Michaeli-CV.pdf',
   updated: '2026-10-10',
 };
 
 export const nav = [
+  { label: 'Skills', href: '/#skills' },
   { label: 'Projects', href: '/#work' },
-  { label: 'About', href: '/#about' },
-  { label: 'AI', href: '/#ai' },
-  { label: 'Journey', href: '/#journey' },
   { label: 'Contact', href: '/#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Journey', href: '/#journey' },
 ];
 
 export const roles = [

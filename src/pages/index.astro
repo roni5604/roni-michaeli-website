@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/home/Hero.astro';
 import About from '../components/home/About.astro';
 import Work from '../components/home/Work.astro';
-import Marquee from '../components/home/Marquee.astro';
+import Skills from '../components/home/Skills.astro';
 import AIFocus from '../components/home/AIFocus.astro';
 import Journey from '../components/home/Journey.astro';
 import Faq from '../components/home/Faq.astro';
@@ -26,11 +26,11 @@ const faqLd = {
 
 <Base type="profile" jsonLd={[website, faqLd]}>
   <Hero />
+  <Skills />
   <Work />
-  <Marquee />
+  <Contact />
   <About />
   <AIFocus />
   <Journey />
   <Faq />
-  <Contact />
 </Base>

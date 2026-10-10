@@ -29,6 +29,7 @@ in the command menu and in the sitemap.
 
 ## Deploys
 
+- Home page order: hero → languages & skills → projects → contact → about → how I work → journey → FAQ.
 - Push to `main` → `.github/workflows/deploy.yml` builds and publishes to GitHub Pages
   (custom domain in `public/CNAME`).
 - Push to any other branch → `.github/workflows/preview.yml` builds it, runs an axe-core

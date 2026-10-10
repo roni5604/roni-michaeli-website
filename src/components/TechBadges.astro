@@ -1,0 +1,56 @@
+---
+import { langColor } from '../data/tech';
+
+interface Props {
+  languages: string[];
+  skills: string[];
+  size?: 'sm' | 'lg';
+  maxSkills?: number;
+}
+const { languages, skills, size = 'sm', maxSkills } = Astro.props;
+const shown = maxSkills ? skills.slice(0, maxSkills) : skills;
+const hidden = skills.length - shown.length;
+const lg = size === 'lg';
+---
+
+<div class:list={['grid', lg ? 'gap-5' : 'gap-3']}>
+  <div>
+    <p class:list={['font-mono tracking-[0.2em] text-faint uppercase', lg ? 'text-[11px]' : 'text-[10px]']}>
+      Language{languages.length > 1 ? 's' : ''}
+    </p>
+    <ul class:list={['mt-2 flex flex-wrap', lg ? 'gap-2.5' : 'gap-2']}>
+      {
+        languages.map((l) => (
+          <li
+            class:list={[
+              'inline-flex items-center gap-2 rounded-lg border font-mono font-semibold text-ink',
+              lg ? 'px-3.5 py-2 text-sm' : 'px-2.5 py-1 text-xs',
+            ]}
+            style={`border-color:color-mix(in srgb, ${langColor(l)} 55%, transparent);background:color-mix(in srgb, ${langColor(l)} 16%, transparent)`}
+          >
+            <span class="h-2 w-2 rounded-full" style={`background:${langColor(l)}`} aria-hidden="true" />
+            {l}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <p class:list={['font-mono tracking-[0.2em] text-faint uppercase', lg ? 'text-[11px]' : 'text-[10px]']}>Skills &amp; tools</p>
+    <ul class:list={['mt-2 flex flex-wrap', lg ? 'gap-2' : 'gap-1.5']}>
+      {
+        shown.map((s) => (
+          <li
+            class:list={[
+              'rounded-full border border-line-strong bg-white/[0.03] text-ink/90',
+              lg ? 'px-3 py-1.5 text-sm' : 'px-2.5 py-1 text-[11px]',
+            ]}
+          >
+            {s}
+          </li>
+        ))
+      }
+      {hidden > 0 && <li class="rounded-full px-2 py-1 text-[11px] text-faint">+{hidden} more</li>}
+    </ul>
+  </div>
+</div>

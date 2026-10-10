@@ -1,0 +1,75 @@
+---
+import { skillGroups, langColor } from '../../data/tech';
+import { stack } from '../../data/site';
+const half = Math.ceil(stack.length / 2);
+const rows = [stack.slice(0, half), stack.slice(half)];
+---
+
+<section id="skills" class="relative py-24 md:py-32" aria-labelledby="skills-title">
+  <div class="container-x">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="eyebrow" data-reveal>Languages &amp; skills</p>
+        <h2 id="skills-title" class="mt-5 max-w-3xl text-4xl font-semibold md:text-6xl" data-split>The tools I write with.</h2>
+      </div>
+      <p class="max-w-sm text-muted" data-reveal style="--d:1">
+        A computer-science foundation across many languages — and every project below shows exactly which ones it was built with.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 md:grid-cols-2">
+      {
+        skillGroups.map((g, gi) => (
+          <article data-reveal style={`--d:${gi}`} class="spot-card glass rounded-3xl p-7" data-tilt="off">
+            <div class="relative z-[3]">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="font-display text-xl font-semibold">{g.title}</h3>
+                <p class="font-mono text-[11px] tracking-wider text-faint uppercase">{g.note}</p>
+              </div>
+              <ul class="mt-5 flex flex-wrap gap-2">
+                {g.items.map((it) =>
+                  g.langs ? (
+                    <li
+                      class="inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 font-mono text-sm font-semibold text-ink"
+                      style={`border-color:color-mix(in srgb, ${langColor(it)} 55%, transparent);background:color-mix(in srgb, ${langColor(it)} 15%, transparent)`}
+                    >
+                      <span class="h-2 w-2 rounded-full" style={`background:${langColor(it)}`} aria-hidden="true" />
+                      {it}
+                    </li>
+                  ) : (
+                    <li class="rounded-full border border-line-strong bg-white/[0.03] px-3 py-1.5 text-sm text-ink/90">{it}</li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="marquee-wrap mt-16 grid gap-4 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]" aria-hidden="true">
+    {
+      rows.map((row, r) => (
+        <div class="marquee flex overflow-hidden">
+          <div
+            class="marquee-track flex shrink-0 animate-marquee gap-4 pr-4"
+            style={`--marquee-duration:${r === 0 ? 46 : 54}s;${r === 1 ? 'animation-direction:reverse;' : ''}`}
+          >
+            {[...row, ...row].map((s, i) => (
+              <span
+                class:list={[
+                  'inline-flex items-center gap-3 rounded-full border border-line px-5 py-2.5 font-display text-lg whitespace-nowrap',
+                  i % 3 === 0 ? 'text-ink' : 'text-muted',
+                ]}
+              >
+                <span class:list={['h-1.5 w-1.5 rounded-full', ['bg-cyan', 'bg-violet', 'bg-pink'][i % 3]]} />
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

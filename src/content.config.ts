@@ -15,6 +15,7 @@ const projects = defineCollection({
       category: z.enum(categories),
       featured: z.boolean().default(false),
       role: z.string(),
+      languages: z.array(z.string()).min(1),
       stack: z.array(z.string()),
       highlights: z.array(z.string()).default([]),
       cover: image(),

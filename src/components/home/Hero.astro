@@ -56,6 +56,14 @@ const liveCount = projects.filter((p) => p.data.live).length;
         <a href={site.cv} target="_blank" rel="noopener" class="btn text-muted hover:text-ink">
           Download CV <span class="sr-only">(PDF, opens in a new tab)</span>
         </a>
+        <span class="flex items-center gap-2">
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition-colors hover:border-cyan hover:text-ink" aria-label="LinkedIn (opens in a new tab)" data-magnetic="0.25">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"></path></svg>
+          </a>
+          <a href={site.github} target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition-colors hover:border-cyan hover:text-ink" aria-label="GitHub (opens in a new tab)" data-magnetic="0.25">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"></path></svg>
+          </a>
+        </span>
       </div>
 
       <dl data-reveal style="--d:6" class="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-8">
@@ -105,8 +113,8 @@ const liveCount = projects.filter((p) => p.data.live).length;
     </div>
   </div>
 
-  <a href="#about" class="group absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-faint md:flex">
-    <span class="sr-only">Scroll to About</span>
+  <a href="#skills" class="group absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-faint md:flex">
+    <span class="sr-only">Scroll to skills</span>
     <span class="grid h-11 w-7 place-items-start justify-center rounded-full border border-line-strong pt-2 group-hover:border-cyan" aria-hidden="true">
       <span class="h-2 w-1 rounded-full bg-cyan motion-safe:animate-bounce"></span>
     </span>

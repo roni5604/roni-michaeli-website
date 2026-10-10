@@ -37,7 +37,7 @@ const tick = (t: number) => lenis?.raf(t * 1000);
 
 function startLenis() {
   if (lenis || reduced()) return;
-  lenis = new Lenis({ duration: 1.1, anchors: { offset: -80 }, autoRaf: false });
+  lenis = new Lenis({ duration: 1.1, autoRaf: false });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(tick);
   gsap.ticker.lagSmoothing(0);
@@ -48,6 +48,49 @@ function stopLenis() {
   lenis.destroy();
   lenis = null;
 }
+
+/* ---------------- In-page anchor links ----------------
+ * One handler for every link to a section on the current page ("#work",
+ * "/#work"). It runs in the capture phase, before Astro's router and Lenis,
+ * so the two never fight over the scroll position (which made some buttons
+ * appear to do nothing, especially on Safari / iOS). */
+const HEADER_OFFSET = 88;
+
+function scrollToId(id: string, immediate = false) {
+  const target = id ? document.getElementById(id) : null;
+  if (id && !target) return false;
+  const top = target ? target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET : 0;
+  if (lenis) {
+    lenis.scrollTo(Math.max(0, top), { immediate, force: true, lock: !immediate });
+  } else {
+    window.scrollTo({ top: Math.max(0, top), behavior: immediate || reduced() ? 'auto' : 'smooth' });
+  }
+  if (target && !immediate) {
+    // Move keyboard focus to the section without jumping the page.
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  }
+  return true;
+}
+
+document.addEventListener(
+  'click',
+  (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = (e.target as Element | null)?.closest?.('a[href*="#"]') as HTMLAnchorElement | null;
+    if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || url.pathname.replace(/\/$/, '') !== location.pathname.replace(/\/$/, '')) return;
+    const id = decodeURIComponent(url.hash.slice(1));
+    if (id && !document.getElementById(id)) return;
+    // preventDefault is enough: Astro's router skips handled clicks, and
+    // other listeners (e.g. closing the mobile menu) still run.
+    e.preventDefault();
+    scrollToId(id);
+    history.pushState(history.state, '', url.hash || location.pathname);
+  },
+  { capture: true },
+);
 
 /* ---------------- Per-page setup ---------------- */
 type Cleanup = () => void;
@@ -628,7 +671,12 @@ function init() {
   setupMotionToggle();
   setupCursorGlow();
   setupSectionParallax();
-  requestAnimationFrame(() => ScrollTrigger.refresh());
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+    // Arriving from another page at "/#section": land on the section.
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id) scrollToId(id, true);
+  });
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 

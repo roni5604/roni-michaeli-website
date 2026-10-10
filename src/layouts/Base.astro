@@ -44,7 +44,7 @@ const person = {
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Ariel University' },
   knowsAbout: ['Software development', 'Computer science', 'Artificial intelligence', 'Machine learning', 'Full-stack development', 'Python', 'TypeScript', 'C#'],
   address: { '@type': 'PostalAddress', addressCountry: 'IL' },
-  sameAs: [site.github],
+  sameAs: [site.github, site.linkedin],
 };
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -57,6 +57,7 @@ const paletteItems = [
     .map((p) => ({ group: 'Live sites', label: `Open ${p.data.title}`, href: p.data.live!, hint: 'External', external: true })),
   { group: 'Contact', label: 'Download CV (PDF)', href: site.cv, hint: 'PDF', external: true },
   { group: 'Contact', label: 'WhatsApp', href: site.whatsapp, hint: 'External', external: true },
+  { group: 'Contact', label: 'LinkedIn', href: site.linkedin, hint: 'External', external: true },
   { group: 'Contact', label: 'GitHub', href: site.github, hint: 'External', external: true },
   { group: 'Site', label: 'Accessibility statement', href: '/accessibility', hint: 'Page' },
   { group: 'Site', label: 'Privacy policy', href: '/privacy', hint: 'Page' },

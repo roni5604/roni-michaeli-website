@@ -4,6 +4,7 @@ import { Image, getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import { proseClasses } from '../../data/ui';
 import { site } from '../../data/site';
+import TechBadges from '../../components/TechBadges.astro';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -47,7 +48,8 @@ const ld = {
   url: `${site.url}/projects/${id}`,
   image: new URL(og.src, site.url).href,
   creator: { '@id': `${site.url}/#person` },
-  keywords: data.stack.join(', '),
+  keywords: [...data.languages, ...data.stack].join(', '),
+  programmingLanguage: data.languages,
   ...(data.live ? { sameAs: data.live } : {}),
 };
 const crumbs = {
@@ -97,7 +99,17 @@ const crumbs = {
         </h1>
         <p class="mt-6 max-w-3xl text-xl leading-relaxed text-muted md:text-2xl" data-reveal style="--d:2">{data.tagline}</p>
 
-        <div class="mt-9 flex flex-wrap gap-3" data-reveal style="--d:3">
+        <section
+          aria-label="Built with"
+          class="glass mt-9 max-w-4xl rounded-3xl p-6 md:p-7"
+          style="box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 30px 80px -40px var(--accent)"
+          data-reveal
+        >
+          <p class="mb-4 font-display text-lg font-semibold">Built with</p>
+          <TechBadges languages={data.languages} skills={data.stack} size="lg" />
+        </section>
+
+        <div class="mt-8 flex flex-wrap gap-3" data-reveal style="--d:4">
           {
             data.live && (
               <a href={data.live} target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-magnetic>
@@ -156,14 +168,6 @@ const crumbs = {
           <div>
             <dt class="font-mono text-[11px] tracking-[0.2em] text-faint uppercase">Year</dt>
             <dd class="mt-1.5 text-sm text-ink">{data.year}</dd>
-          </div>
-          <div>
-            <dt class="font-mono text-[11px] tracking-[0.2em] text-faint uppercase">Stack</dt>
-            <dd class="mt-2.5">
-              <ul class="flex flex-wrap gap-2">
-                {data.stack.map((s) => <li class="chip">{s}</li>)}
-              </ul>
-            </dd>
           </div>
           {
             data.highlights.length > 0 && (
