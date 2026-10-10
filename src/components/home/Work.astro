@@ -6,7 +6,7 @@ const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.da
 const featured = all.filter((p) => p.data.featured);
 ---
 
-<section id="work" data-hscroll class="relative overflow-hidden py-28 lg:flex lg:min-h-screen lg:flex-col lg:justify-center lg:py-16" aria-labelledby="work-title">
+<section id="work" data-hscroll class="relative overflow-hidden py-28 lg:flex lg:min-h-screen lg:flex-col lg:justify-center lg:py-10" aria-labelledby="work-title">
   <div class="container-x">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div>

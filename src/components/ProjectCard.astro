@@ -25,7 +25,7 @@ const liveLabel = host && host.endsWith('github.io') ? 'Live demo' : host;
   style={`--accent:${data.accent}`}
   data-hscroll-item={variant === 'rail' ? '' : undefined}
 >
-  <div class:list={["relative overflow-hidden", variant === "rail" ? "aspect-[2/1]" : "aspect-[16/10]"]}>
+  <div class:list={["relative overflow-hidden", variant === "rail" ? "aspect-[2/1] lg:aspect-[21/9]" : "aspect-[16/10]"]}>
     <Image
       src={data.cover}
       alt={data.coverAlt}

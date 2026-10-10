@@ -562,9 +562,13 @@ function setupDock() {
   const dock = document.querySelector<HTMLElement>('[data-dock]');
   if (!dock) return;
   const contact = document.getElementById('contact');
+  const gallery = document.querySelector<HTMLElement>('[data-hscroll]');
   let contactVisible = false;
   const update = () => {
-    const show = window.scrollY > window.innerHeight * 0.6 && !contactVisible;
+    // Stay out of the way while the pinned project gallery fills the screen.
+    const g = gallery?.classList.contains('is-pinned') ? gallery.parentElement!.getBoundingClientRect() : null;
+    const overGallery = !!g && g.top < window.innerHeight * 0.5 && g.bottom > window.innerHeight * 0.5;
+    const show = window.scrollY > window.innerHeight * 0.6 && !contactVisible && !overGallery;
     dock.classList.toggle('is-shown', show);
     dock.inert = !show;
   };
