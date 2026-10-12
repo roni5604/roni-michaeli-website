@@ -1,0 +1,54 @@
+---
+title: Yehudit Michaeli · Chef’s Recipe Archive
+tagline: A chef’s lifetime of notebooks turned into a 3D digital cookbook — about 3,000 recipes and 88 restaurant menus.
+summary: The recipe archive of chef Yehudit Michaeli and her French-country restaurant “Michaeli – Cuisine de Campagne” in Rishpon, Israel. Thousands of recipes from her Google Drive folders, catalogued by chapter, holiday and world cuisine, with interactive recipe pages, a menu archive and procedural 3D scenes built entirely in code.
+year: '2026'
+order: 2.5
+category: Web & Apps
+featured: true
+role: Solo developer — data pipeline, design, 3D and front end
+languages: [TypeScript, Python]
+stack: [Astro, React, Three.js, React Three Fiber, Tailwind CSS, MiniSearch, Data pipeline, Vercel, Accessibility]
+highlights:
+  - About 3,000 recipes catalogued automatically from the original Drive folders
+  - ~240 featured recipes with scaling, gram conversion, timers, cooking mode and a shopping list
+  - 88 digitised restaurant menus from 2002–2009
+  - Hebrew search that understands prefixes, final letters and niqqud
+  - Procedural 3D scenes — a chef’s table, a page-turning recipe book, a cuisine globe — with no external models
+  - Built to IS 5568 / WCAG 2.2 AA with an accessibility menu and opt-in cookies
+cover: ../../assets/projects/yehudit-michaeli/cover.jpg
+coverAlt: The “Michaeli – Cuisine de Campagne” logo over a mosaic of rustic dishes — breads, appetizers, cakes and a cheese board
+gallery:
+  - src: ../../assets/projects/yehudit-michaeli/breads.jpg
+    alt: Rustic breads — challah, baguettes and country loaves on a wooden table
+    caption: Every recipe chapter has its own warm, rustic cover image.
+  - src: ../../assets/projects/yehudit-michaeli/cakes.jpg
+    alt: Three cakes on stands in a country kitchen
+  - src: ../../assets/projects/yehudit-michaeli/french.jpg
+    alt: French dishes on a rustic table
+    caption: World cuisines are explored on an interactive 3D globe.
+live: https://yehudit-michaeli.vercel.app/
+links:
+  - label: Source on GitHub
+    url: https://github.com/roni5604/yehudit-michaeli
+accent: '#d4a373'
+---
+
+## The idea
+
+Chef Yehudit Michaeli ran a French-country restaurant in Rishpon, and kept thousands of recipes and menus in Google Drive folders over the years. This site turns that archive into a **digital cookbook** that anyone can search and cook from.
+
+## What I built
+
+- **A full catalogue** — every recipe organised by chapter, sub-chapter, holiday and world cuisine, generated from the original file and folder names by a Python pipeline. Each entry opens the original page.
+- **Featured recipes, fully interactive** — around 240 recipes have their own pages with quantity scaling, conversion to grams, built-in timers, a cooking mode that keeps the screen awake, a shopping list and print view.
+- **The menu archive** — 88 menus from 2002–2009: seasonal menus, tasting evenings and holiday dinners, with private guests’ names removed.
+- **Hebrew-aware search** that understands prefixes (ו/ה/ב/ל/מ/ש/כ), final letters and niqqud.
+
+## 3D, written in code
+
+All scenes are procedural — no downloaded models or images — built with Three.js, React Three Fiber and drei: a chef’s table with a copper cocotte and steam shader on the home page, a Hebrew recipe book that turns pages right-to-left, a dotted globe of world cuisines, a candle-lit corridor of menus, and the logo as a gold 3D emblem. Every animation stops with the system’s reduce-motion setting or from the accessibility menu.
+
+## Accessibility and privacy
+
+Built to Israeli Standard 5568 and WCAG 2.2 AA, with a built-in accessibility menu (Alt+A), full keyboard support and text alternatives for the 3D scenes. No sign-up, no forms, self-hosted fonts and an opt-in cookie banner where “decline” is as easy as “accept”.

@@ -1,5 +1,6 @@
 ---
 import { site, nav } from '../data/site';
+import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 
@@ -13,7 +14,9 @@ const year = new Date().getFullYear();
     <h2 id="footer-title" class="sr-only">Site footer</h2>
     <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
       <div>
-        <p class="font-display text-3xl font-semibold tracking-tight md:text-4xl">
+        <a href="/" class="inline-block" aria-label="Roni Michaeli — home"><Logo class="h-12 w-auto" id="ftr" /></a>
+        <p class="mt-2 text-sm text-faint" lang="he" dir="rtl">רוני מיכאלי · מפתח תוכנה ומומחה AI</p>
+        <p class="mt-8 font-display text-3xl font-semibold tracking-tight md:text-4xl">
           Writing code,<br />
           <span class="text-gradient">building with AI.</span>
         </p>
@@ -44,7 +47,7 @@ const year = new Date().getFullYear();
               </li>
             ))
           }
-          <li><a href="/projects" class="text-muted hover:text-ink">All projects</a></li>
+          <li><a href="/projects/" class="text-muted hover:text-ink">All projects</a></li>
           <li>
             <a href={site.cv} target="_blank" rel="noopener" class="text-muted hover:text-ink">CV (PDF)</a>
           </li>
@@ -54,8 +57,9 @@ const year = new Date().getFullYear();
       <div>
         <p class="font-mono text-xs tracking-[0.2em] text-faint uppercase">Site</p>
         <ul class="mt-4 grid gap-2 text-sm">
-          <li><a href="/accessibility" class="text-muted hover:text-ink">Accessibility statement</a></li>
-          <li><a href="/privacy" class="text-muted hover:text-ink">Privacy policy</a></li>
+          <li><a href="/he/" class="text-muted hover:text-ink" lang="he" hreflang="he">פרופיל בעברית</a></li>
+          <li><a href="/accessibility/" class="text-muted hover:text-ink">Accessibility statement</a></li>
+          <li><a href="/privacy/" class="text-muted hover:text-ink">Privacy policy</a></li>
           <li><a href="/sitemap-index.xml" class="text-muted hover:text-ink">Sitemap</a></li>
           <li>
             <button
@@ -80,7 +84,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
-      <p>© {year} {site.name}. All rights reserved.</p>
+      <p>© {year} {site.name} · <span lang="he">רוני מיכאלי</span>. All rights reserved.</p>
       <p>
         Designed &amp; coded by Roni with Astro and React · <kbd class="rounded border border-line px-1 font-mono">⌘K</kbd> to explore
       </p>

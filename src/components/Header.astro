@@ -1,5 +1,6 @@
 ---
 import { nav, site } from '../data/site';
+import Logo from './Logo.astro';
 ---
 
 <header
@@ -12,14 +13,8 @@ import { nav, site } from '../data/site';
       aria-label="Primary"
       class="flex items-center justify-between gap-4 rounded-full border border-transparent px-3 py-2 transition-all duration-500 group-[.is-scrolled]/header:glass group-[.is-scrolled]/header:shadow-[0_10px_40px_-15px_rgb(0_0_0/0.8)]"
     >
-      <a href="/" class="group flex items-center gap-3 rounded-full pr-2" aria-label="Roni Michaeli — home">
-        <span
-          class="relative grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-cyan via-violet to-pink font-display text-sm font-bold text-bg"
-          aria-hidden="true">RM</span
-        >
-        <span class="hidden font-display text-sm font-semibold tracking-tight sm:block">
-          Roni Michaeli<span class="text-cyan">.</span>
-        </span>
+      <a href="/" class="group flex items-center rounded-full px-2 py-1" aria-label="Roni Michaeli — home">
+        <Logo class="h-8 w-auto transition-transform duration-500 group-hover:scale-[1.04] sm:h-9" id="hdr" />
       </a>
 
       <ul class="hidden items-center gap-1 md:flex">
@@ -86,7 +81,7 @@ import { nav, site } from '../data/site';
           ))
         }
         <li>
-          <a href="/projects" class="block rounded-2xl px-4 py-3 font-display text-lg hover:bg-surface-2">All projects</a>
+          <a href="/projects/" class="block rounded-2xl px-4 py-3 font-display text-lg hover:bg-surface-2">All projects</a>
         </li>
         <li class="flex gap-2 p-2">
           <a href={site.cv} target="_blank" rel="noopener" class="btn btn-primary flex-1">Download CV</a>

@@ -166,6 +166,7 @@ const live = {
   'meat-and-cheese': 'https://roni5604.github.io/meatandcheese/index.html',
   wordbox: 'https://roni5604.github.io/WordboxGame/',
   'card-games': 'https://card-games.expo.app',
+  'yehudit-michaeli': 'https://yehudit-michaeli.vercel.app/',
 };
 for (const [slug, url] of Object.entries(live)) {
   for (const v of [
@@ -176,7 +177,7 @@ for (const [slug, url] of Object.entries(live)) {
     const page = await ctx.newPage();
     try {
       const resp = await page.goto(url, { waitUntil: 'load', timeout: 60000 });
-      await page.waitForTimeout(slug === 'wordbox' || slug === 'card-games' ? 9000 : 2500);
+      await page.waitForTimeout(slug === 'wordbox' || slug === 'card-games' || slug === 'yehudit-michaeli' ? 9000 : 2500);
       await page.screenshot({ path: join(out, 'live', `${slug}-${v.name}.png`) });
       summary.live[`${slug}-${v.name}`] = resp ? resp.status() : 'no response';
     } catch (e) {

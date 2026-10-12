@@ -2,7 +2,7 @@ export const site = {
   name: 'Roni Michaeli',
   role: 'Software Developer & AI Specialist',
   url: 'https://ronimichaeli.com',
-  title: 'Roni Michaeli — Software Developer & AI Specialist',
+  title: 'Roni Michaeli · רוני מיכאלי — Software Developer & AI Specialist',
   description:
     'Roni Michaeli is a software developer with a B.Sc. in Computer Science & Mathematics who writes his own code and specialises in building with AI — machine-learning models, games, web and mobile apps. Available for work.',
   location: 'Israel',

@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import roni from '../../assets/roni.jpg';
 import CodeWindow from '../CodeWindow.astro';
+import { getCollection } from 'astro:content';
+const projectCount = (await getCollection('projects')).length;
 ---
 
 <section id="about" class="relative py-28 md:py-36" aria-labelledby="about-title">
@@ -48,7 +50,7 @@ import CodeWindow from '../CodeWindow.astro';
         />
         <figcaption class="absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-bg via-bg/70 to-transparent p-6">
           <p class="font-display text-lg font-semibold">Roni Michaeli</p>
-          <p class="text-sm text-muted">Israel · Hebrew (native), English (fluent)</p>
+          <p class="text-sm text-muted"><span lang="he">רוני מיכאלי</span> · Israel · Hebrew &amp; English</p>
         </figcaption>
       </figure>
 
@@ -65,7 +67,7 @@ import CodeWindow from '../CodeWindow.astro';
             <p class="mt-1 text-xs tracking-wider text-faint uppercase">CS &amp; Maths</p>
           </div>
           <div class="p-5 text-center">
-            <p class="font-display text-3xl font-bold"><span data-count="14">14</span></p>
+            <p class="font-display text-3xl font-bold"><span data-count={projectCount}>{projectCount}</span></p>
             <p class="mt-1 text-xs tracking-wider text-faint uppercase">Projects</p>
           </div>
         </div>

@@ -9,13 +9,31 @@ import Journey from '../components/home/Journey.astro';
 import Faq from '../components/home/Faq.astro';
 import Contact from '../components/home/Contact.astro';
 import { faqs, site } from '../data/site';
+import { names } from '../data/identity';
 
+// Site name for Google ("Roni Michaeli") with the Hebrew and domain spellings.
 const website = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: site.name,
-  url: site.url,
+  '@id': `${site.url}/#website`,
+  name: names.en,
+  alternateName: [names.he, 'ronimichaeli.com', 'ronimichaeli'],
+  url: `${site.url}/`,
+  inLanguage: ['en', 'he'],
   author: { '@id': `${site.url}/#person` },
+  publisher: { '@id': `${site.url}/#person` },
+};
+// Tells Google this page is the profile of the Person above.
+const profilePage = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${site.url}/#profile`,
+  url: `${site.url}/`,
+  name: site.title,
+  inLanguage: 'en',
+  dateModified: site.updated,
+  isPartOf: { '@id': `${site.url}/#website` },
+  mainEntity: { '@id': `${site.url}/#person` },
 };
 const faqLd = {
   '@context': 'https://schema.org',
@@ -24,7 +42,7 @@ const faqLd = {
 };
 ---
 
-<Base type="profile" jsonLd={[website, faqLd]}>
+<Base type="profile" jsonLd={[website, profilePage, faqLd]} alternates={{ en: '/', he: '/he/' }}>
   <Hero />
   <Skills />
   <Work />

@@ -16,7 +16,7 @@ const itemList = {
   itemListElement: projects.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    url: `${site.url}/projects/${p.id}`,
+    url: `${site.url}/projects/${p.id}/`,
     name: p.data.title,
   })),
 };

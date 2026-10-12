@@ -45,7 +45,7 @@ const ld = {
   headline: data.tagline,
   description: data.summary,
   dateCreated: data.year,
-  url: `${site.url}/projects/${id}`,
+  url: `${site.url}/projects/${id}/`,
   image: new URL(og.src, site.url).href,
   creator: { '@id': `${site.url}/#person` },
   keywords: [...data.languages, ...data.stack].join(', '),
@@ -57,8 +57,8 @@ const crumbs = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
-    { '@type': 'ListItem', position: 2, name: 'Projects', item: `${site.url}/projects` },
-    { '@type': 'ListItem', position: 3, name: data.title, item: `${site.url}/projects/${id}` },
+    { '@type': 'ListItem', position: 2, name: 'Projects', item: `${site.url}/projects/` },
+    { '@type': 'ListItem', position: 3, name: data.title, item: `${site.url}/projects/${id}/` },
   ],
 };
 ---
@@ -76,7 +76,7 @@ const crumbs = {
         <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 font-mono text-xs text-faint" data-reveal>
           <a href="/" class="hover:text-ink">Home</a>
           <span aria-hidden="true">/</span>
-          <a href="/projects" class="hover:text-ink">Projects</a>
+          <a href="/projects/" class="hover:text-ink">Projects</a>
           <span aria-hidden="true">/</span>
           <span aria-current="page" class="text-muted">{data.title}</span>
         </nav>
@@ -256,7 +256,7 @@ const crumbs = {
             { p: next, label: 'Next project', dir: 'next' },
           ].map(({ p, label, dir }) => (
             <a
-              href={`/projects/${p.id}`}
+              href={`/projects/${p.id}/`}
               class:list={[
                 'spot-card group relative flex min-h-56 overflow-hidden rounded-[1.75rem] border border-line p-7',
                 dir === 'next' ? 'md:justify-end md:text-right' : '',
@@ -285,7 +285,7 @@ const crumbs = {
         }
       </div>
       <p class="mt-10 text-center">
-        <a href="/projects" class="btn btn-ghost">Back to all projects</a>
+        <a href="/projects/" class="btn btn-ghost">Back to all projects</a>
       </p>
     </nav>
   </article>

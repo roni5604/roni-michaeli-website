@@ -1,0 +1,22 @@
+---
+// Script wordmark "Roni Michaeli" (Great Vibes, OFL) converted to vector paths,
+// so it renders identically everywhere without loading a font.
+import wordmark from '../data/wordmark.json';
+
+interface Props {
+  class?: string;
+  id?: string;
+}
+const { class: className = 'h-8 w-auto', id = 'wm' } = Astro.props;
+---
+
+<svg viewBox={wordmark.viewBox} class={className} aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id={`${id}-ink`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.55" stop-color="#a5f3fc"></stop>
+      <stop offset="1" stop-color="#c4b5fd"></stop>
+    </linearGradient>
+  </defs>
+  <path d={wordmark.d} fill={`url(#${id}-ink)`} stroke={`url(#${id}-ink)`} stroke-width="18" stroke-linejoin="round"></path>
+</svg>

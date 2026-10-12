@@ -1,0 +1,155 @@
+---
+import '@fontsource-variable/heebo';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import roni from '../../assets/roni.jpg';
+import { site } from '../../data/site';
+import { names, summary } from '../../data/identity';
+import { langColor } from '../../data/tech';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Short Hebrew descriptions for each project (English write-ups live on the project pages).
+const he: Record<string, string> = {
+  wordbox: 'מצא ת׳מילה — משחק מילים בעברית לאייפון, לאנדרואיד ולאתר, מקוד אחד ב-Flutter ו-Firebase.',
+  'card-games': 'משחקי קלפים — שבעה משחקים קלאסיים עם משחק מרובה משתתפים בזמן אמת, באתר ובאפליקציות.',
+  'yehudit-michaeli': 'ארכיון המתכונים של השפית יהודית מיכאלי — כ-3,000 מתכונים, 88 תפריטים וסצנות תלת-ממד בקוד.',
+  'hebrew-words-db': 'המאגר הפתוח הגדול של מילים בעברית — יותר מ-67,000 מילים, חופשי לשימוש ב-NLP וב-AI.',
+  'face-recognition': 'זיהוי רגשות מהבעות פנים בזמן אמת מהמצלמה, בעזרת רשת נוירונים (CNN).',
+  'drone-navigation': 'ניווט אוטונומי לרחפן עם חיישנים, הימנעות ממכשולים וחזרה הביתה — בדו-ממד ובתלת-ממד.',
+  'matan-refaely': 'אתר למאמן אומנויות לחימה ונינג׳ה — שיעורים, סדנאות ומערכת שעות.',
+  'expression-benchmark': 'השוואה מבוקרת בין חמישה מודלים לזיהוי הבעות פנים, מבסיס ועד CNN.',
+  'iss-tracker': 'מעקב בזמן אמת אחרי תחנת החלל הבינלאומית, עם תצוגה חיה ב-Google Earth.',
+  'meat-and-cheese': 'אתר מסעדה — תפריט, סניפים, גלריה, הזמנת שולחן ומשלוחים.',
+  'blockchain-voting': 'מערכת הצבעות לחברה על בלוקצ׳יין, עם חוזים חכמים ו-MetaMask.',
+  'yoga-time': 'אפליקציית אנדרואיד לסטודיו ליוגה — שיעורים, הרשמה, גלריה ודירוגים.',
+  'lunar-landing': 'סימולציית נחיתה רכה על הירח עם בקר PID, בהשראת החללית בראשית.',
+  'gnss-analysis': 'חישוב מיקום מנתוני לוויין גולמיים של טלפון, בשיטת הריבועים הפחותים.',
+  'aruco-detection': 'זיהוי סמנים בווידאו ומדידת מרחק וזווית לכל פריים, לניווט רחפנים.',
+};
+
+const skills = ['Python', 'TypeScript', 'JavaScript', 'C#', 'C / C++', 'Java', 'Kotlin', 'Dart', 'SQL'];
+const tools = ['React', 'React Native', 'Flutter', 'Astro', 'Node.js', 'Firebase', 'PyTorch', 'TensorFlow', 'OpenCV', 'עבודה עם סוכני AI'];
+
+const profileLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${site.url}/he/#profile`,
+  url: `${site.url}/he/`,
+  name: `${names.he} — מפתח תוכנה ומומחה AI`,
+  inLanguage: 'he',
+  dateModified: site.updated,
+  about: { '@id': `${site.url}/#person` },
+  mainEntity: { '@id': `${site.url}/#person` },
+  description: summary.he,
+};
+---
+
+<Base
+  lang="he"
+  title={`${names.he} — מפתח תוכנה ומומחה AI`}
+  description={summary.he}
+  type="profile"
+  jsonLd={[profileLd]}
+  alternates={{ en: '/', he: '/he/' }}
+>
+  <article class="he relative overflow-hidden pt-36 pb-24" style="font-family: 'Heebo Variable', var(--font-sans)">
+    <div class="pointer-events-none absolute -top-40 right-1/4 h-[32rem] w-[32rem] rounded-full bg-cyan/15 blur-[120px]" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute top-60 -left-40 h-[30rem] w-[30rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
+
+    <div class="container-x relative grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+      <header>
+        <p class="inline-flex items-center gap-2.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-sm text-emerald-200" data-reveal>
+          <span class="live-dot" aria-hidden="true"></span> זמין לעבודה · ישראל
+        </p>
+        <h1 class="mt-6 text-[clamp(3rem,9vw,6.5rem)] leading-[0.95] font-bold" style="font-family: 'Heebo Variable', sans-serif; letter-spacing: -0.02em">
+          {names.he}
+        </h1>
+        <p class="mt-3 font-mono text-sm tracking-[0.15em] text-cyan uppercase" dir="ltr" lang="en">Roni Michaeli</p>
+        <p class="mt-6 text-2xl font-semibold text-ink md:text-3xl" data-reveal style="--d:1">מפתח תוכנה ומומחה לעבודה עם בינה מלאכותית</p>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted" data-reveal style="--d:2">{summary.he}</p>
+
+        <div class="mt-9 flex flex-wrap gap-3" data-reveal style="--d:3">
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" class="btn bg-emerald-500 text-bg hover:bg-emerald-400">
+            וואטסאפ <span class="sr-only">(נפתח בכרטיסייה חדשה)</span>
+          </a>
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="btn bg-[#0a66c2] text-white hover:bg-[#0b75de]">
+            לינקדאין <span class="sr-only">(נפתח בכרטיסייה חדשה)</span>
+          </a>
+          <a data-email={site.emailParts.join('|')} href="#contact-he" class="btn btn-ghost">מייל</a>
+          <a href={site.cv} target="_blank" rel="noopener" class="btn btn-ghost">קורות חיים (PDF)</a>
+          <a href="/" class="btn btn-ghost" hreflang="en" lang="en">English site →</a>
+        </div>
+      </header>
+
+      <div class="mx-auto w-full max-w-sm">
+        <div class="photo-ring rounded-[2rem] p-[2px]">
+          <div class="overflow-hidden rounded-[calc(2rem-2px)]">
+            <Image src={roni} widths={[360, 600]} sizes="(min-width: 1024px) 28vw, 80vw" alt="רוני מיכאלי, מפתח תוכנה" class="aspect-[4/5] w-full object-cover object-[50%_18%]" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="container-x relative mt-24" aria-labelledby="he-skills">
+      <h2 id="he-skills" class="text-3xl font-bold md:text-4xl" style="font-family: 'Heebo Variable', sans-serif">שפות תכנות וכלים</h2>
+      <ul class="mt-6 flex flex-wrap gap-2" dir="ltr" lang="en">
+        {
+          skills.map((l) => (
+            <li
+              class="inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 font-mono text-sm font-semibold text-ink"
+              style={`border-color:color-mix(in srgb, ${langColor(l)} 55%, transparent);background:color-mix(in srgb, ${langColor(l)} 15%, transparent)`}
+            >
+              <span class="h-2 w-2 rounded-full" style={`background:${langColor(l)}`} aria-hidden="true" />
+              {l}
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="mt-3 flex flex-wrap gap-2">
+        {tools.map((t) => <li class="rounded-full border border-line-strong px-3 py-1.5 text-sm text-ink/90">{t}</li>)}
+      </ul>
+    </section>
+
+    <section class="container-x relative mt-20" aria-labelledby="he-projects">
+      <h2 id="he-projects" class="text-3xl font-bold md:text-4xl" style="font-family: 'Heebo Variable', sans-serif">פרויקטים שבניתי</h2>
+      <p class="mt-3 text-muted">{projects.length} פרויקטים — לחיצה פותחת את עמוד הפרויקט המלא (באנגלית).</p>
+      <ul class="mt-8 grid gap-4 md:grid-cols-2">
+        {
+          projects.map((p) => (
+            <li class="glass rounded-2xl p-5">
+              <a href={`/projects/${p.id}/`} class="font-semibold text-ink hover:text-cyan" lang="en" dir="ltr">
+                {p.data.title}
+              </a>
+              <p class="mt-2 text-sm leading-relaxed text-muted">{he[p.id] ?? p.data.tagline}</p>
+              <p class="mt-3 font-mono text-xs text-faint" dir="ltr" lang="en">
+                {[...p.data.languages, ...p.data.stack.slice(0, 3)].join(' · ')}
+              </p>
+              {p.data.live && (
+                <a href={p.data.live} target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 text-xs text-emerald-300 hover:underline">
+                  <span class="live-dot" aria-hidden="true" /> לאתר החי <span class="sr-only">(נפתח בכרטיסייה חדשה)</span>
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="contact-he" class="container-x relative mt-20" aria-labelledby="he-contact">
+      <div class="glass rounded-3xl p-8 text-center md:p-12">
+        <h2 id="he-contact" class="text-3xl font-bold md:text-5xl" style="font-family: 'Heebo Variable', sans-serif">מחפשים מפתח? בואו נדבר.</h2>
+        <p class="mx-auto mt-4 max-w-xl text-muted">
+          אני זמין למשרת פיתוח מלאה — Full-Stack, Backend או AI. הדרך המהירה ביותר אליי היא וואטסאפ, ובדרך כלל אני עונה באותו יום.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" class="btn bg-emerald-500 text-bg hover:bg-emerald-400">וואטסאפ</a>
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="btn bg-[#0a66c2] text-white hover:bg-[#0b75de]">לינקדאין</a>
+          <a href={site.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+          <a href="tel:+972544396677" class="btn btn-ghost" dir="ltr">{site.phoneDisplay}</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
