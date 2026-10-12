@@ -1,0 +1,43 @@
+# Roni Michaeli (רוני מיכאלי)
+
+> Roni Michaeli is an Israeli software developer and AI specialist. He holds a B.Sc. in Computer Science and Mathematics from Ariel University, writes his own code in Python, TypeScript, C#, Java, C/C++ and Dart, and specialises in working with AI — machine-learning models and AI-assisted development of complete products: web and mobile apps, games and data projects. He is available for a full-time developer role.
+
+רוני מיכאלי: רוני מיכאלי הוא מפתח תוכנה ומומחה לעבודה עם בינה מלאכותית (AI) מישראל. בוגר תואר ראשון (B.Sc.) במדעי המחשב ומתמטיקה מאוניברסיטת אריאל, כותב קוד בעצמו ב-Python, TypeScript, C#, Java, C/C++ ו-Dart, ומתמחה בבניית מוצרים שלמים בעזרת AI: אתרים, אפליקציות, משחקים, מודלים של למידת מכונה ופרויקטי דאטה. זמין למשרת פיתוח מלאה.
+
+## Key facts
+
+- Name: Roni Michaeli — in Hebrew: רוני מיכאלי
+- Role: Software developer and AI specialist (מפתח תוכנה ומומחה AI)
+- Education: B.Sc. in Computer Science and Mathematics, Ariel University, Israel
+- Writes code in: Python, TypeScript, JavaScript, C#, Java, C/C++, Kotlin, Dart, SQL
+- Works with: React, React Native, Expo, Flutter, Astro, Node.js, Firebase, Supabase, PyTorch, TensorFlow, OpenCV, AI coding agents
+- Based in: Israel. Languages: Hebrew (native), English (fluent)
+- Status: Available for work — full-time developer role (full-stack, backend or AI-focused)
+- Website: https://ronimichaeli.com · Hebrew profile: https://ronimichaeli.com/he/
+- LinkedIn: https://www.linkedin.com/in/roni-michaeli-7523a5262/
+- GitHub: https://github.com/roni5604
+
+## Projects
+
+- [Find the Word](https://ronimichaeli.com/projects/wordbox/): A Hebrew word game for iPhone, Android and the web — from one codebase. Built with Dart, Flutter, Firebase Auth, Cloud Firestore, GitHub Actions. Live: https://roni5604.github.io/WordboxGame/
+- [Card Games](https://ronimichaeli.com/projects/card-games/): One table, seven classic card games — real-time multiplayer on web, iOS and Android. Built with TypeScript, React Native, Expo, Expo Router, Reanimated. Live: https://card-games.expo.app
+- [Yehudit Michaeli · Chef’s Recipe Archive](https://ronimichaeli.com/projects/yehudit-michaeli/): A chef’s lifetime of notebooks turned into a 3D digital cookbook — about 3,000 recipes and 88 restaurant menus. Built with TypeScript, Python, Astro, React, Three.js, React Three Fiber. Live: https://yehudit-michaeli.vercel.app/
+- [hebrew-words-db](https://ronimichaeli.com/projects/hebrew-words-db/): The largest freely usable list of Hebrew words — public domain, ready for NLP and AI work. Built with Python, Data pipelines, NLP, Dataset design, Open-source licensing.
+- [Real-Time Emotion Recognition](https://ronimichaeli.com/projects/face-recognition/): A CNN that reads facial expressions live from a webcam — wrapped in a friendly desktop app. Built with Python, TensorFlow, Keras, OpenCV, PySide6.
+- [Autonomous Drone Navigation](https://ronimichaeli.com/projects/drone-navigation/): Sensor-driven drones that map, avoid obstacles and fly home — in 2D and then 3D. Built with Python, Java, Pygame, Path planning, Sensor modelling, Autonomous navigation.
+- [Matan Refaely](https://ronimichaeli.com/projects/matan-refaely/): A bold, bilingual site for a martial-arts and ninja coach. Built with JavaScript, CSS, HTML, React, Vite, Responsive design, GitHub Pages. Live: https://matanrefaely.com/
+- [Expression Model Benchmark](https://ronimichaeli.com/projects/expression-benchmark/): Five models, one problem — measuring what actually moves accuracy. Built with Python, PyTorch, torchvision, scikit-learn, CNNs.
+- [ISS Real-Time Tracker](https://ronimichaeli.com/projects/iss-tracker/): Live orbital tracking of the International Space Station, streamed into Google Earth. Built with Python, Skyfield, Flask, KML, Tkinter.
+- [Meat & Cheese](https://ronimichaeli.com/projects/meat-and-cheese/): A multi-page restaurant site — menu, branches, gallery, reservations and delivery. Built with HTML, CSS, JavaScript, Responsive design, Multi-page site, UI design. Live: https://roni5604.github.io/meatandcheese/index.html
+- [Company Voting on the Blockchain](https://ronimichaeli.com/projects/blockchain-voting/): Tamper-proof company votes and treasury management with smart contracts. Built with Solidity, JavaScript, Hardhat, Ethers.js, React, MetaMask.
+- [YogaTime](https://ronimichaeli.com/projects/yoga-time/): An Android app that connects a yoga studio with its students. Built with Kotlin, Java, XML, Android SDK, Firebase, Team project.
+- [Lunar Landing Simulation](https://ronimichaeli.com/projects/lunar-landing/): PID control that lands a spacecraft softly — inspired by the Beresheet mission. Built with Python, NumPy, Pandas, Matplotlib, PID control.
+- [GNSS Positioning from Raw Data](https://ronimichaeli.com/projects/gnss-analysis/): Solving a phone's position from raw satellite measurements — no black boxes. Built with Python, Pandas, NumPy, Matplotlib, NavPy.
+- [Marker Pose from Video](https://ronimichaeli.com/projects/aruco-detection/): Computer vision that finds ArUco markers and measures distance and angle, frame by frame. Built with Python, OpenCV, NumPy, Computer vision, Pose estimation.
+
+## Pages
+
+- [Home (English)](https://ronimichaeli.com/)
+- [פרופיל בעברית](https://ronimichaeli.com/he/)
+- [All projects](https://ronimichaeli.com/projects/)
+- [CV (PDF)](https://ronimichaeli.com/cv/Roni-Michaeli-CV.pdf)
