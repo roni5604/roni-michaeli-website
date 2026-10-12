@@ -39,3 +39,14 @@ in the command menu and in the sitemap.
 
 Built to WCAG 2.2 AA / IS 5568, with a reduce-motion switch, full keyboard support and no
 tracking. See `/accessibility` and `/privacy` on the live site.
+
+## Search & AI visibility
+
+- **Logo & icons:** script wordmark (Great Vibes, OFL) as vector paths in `src/data/wordmark.json`;
+  favicon set (`favicon.ico` 16/32/48, SVG, 96/192 PNG), `apple-touch-icon.png` and manifest icons in `public/`.
+- **Structured data:** `src/data/identity.ts` is the single source of facts — `Person` (with the
+  Hebrew name `רוני מיכאלי` as `alternateName`), `WebSite` (site name) and `ProfilePage`.
+- **Hebrew:** a Hebrew profile page at `/he/` (in the sitemap and `hreflang`, not linked from the UI)
+  so Hebrew searches for the name find the site; the visible site stays English.
+- **AI models:** `/llms.txt` (generated from the projects at build time) and `robots.txt` that
+  explicitly allows AI search crawlers.
