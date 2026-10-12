@@ -144,9 +144,9 @@ for (const v of views) {
   await page.screenshot({ path: join(out, 'shots', 'motion-palette-desktop.jpg'), type: 'jpeg', quality: 80 });
   await page.keyboard.press('Escape');
   // Navigate to a project via the router to make sure transitions work
-  const first = await page.$('a[href^="/projects/"]');
-  if (first) {
-    await first.click();
+  const first = page.locator('main a[href^="/projects/"]:not([href="/projects/"])').first();
+  if (await first.count()) {
+    await first.click({ force: true });
     await page.waitForTimeout(1800);
     summary.navigationTest = page.url();
     await page.screenshot({ path: join(out, 'shots', 'motion-project-desktop.jpg'), type: 'jpeg', quality: 80 });
