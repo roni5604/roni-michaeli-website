@@ -42,7 +42,12 @@ const faqLd = {
 };
 ---
 
-<Base type="profile" jsonLd={[website, profilePage, faqLd]} alternates={{ en: '/', he: '/he/' }}>
+<Base
+  type="profile"
+  description={`${site.description} | ${names.he} — מפתח תוכנה ומומחה AI.`}
+  jsonLd={[website, profilePage, faqLd]}
+  alternates={{ en: '/', he: '/he/' }}
+>
   <Hero />
   <Skills />
   <Work />
