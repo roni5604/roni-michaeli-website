@@ -32,6 +32,36 @@ const he: Record<string, string> = {
 const skills = ['Python', 'TypeScript', 'JavaScript', 'C#', 'C / C++', 'Java', 'Kotlin', 'Dart', 'SQL'];
 const tools = ['React', 'React Native', 'Flutter', 'Astro', 'Node.js', 'Firebase', 'PyTorch', 'TensorFlow', 'OpenCV', 'עבודה עם סוכני AI'];
 
+// שאלות נפוצות בעברית — מוצגות בעמוד וגם כנתונים מובנים לגוגל.
+const faqHe = [
+  {
+    q: 'מי זה רוני מיכאלי?',
+    a: 'רוני מיכאלי הוא מפתח תוכנה ומומחה לעבודה עם בינה מלאכותית מישראל, בוגר B.Sc. במדעי המחשב ומתמטיקה מאוניברסיטת אריאל, וגם מורה פרטי למדעי המחשב ומתמטיקה.',
+  },
+  {
+    q: 'במה רוני מיכאלי עוסק?',
+    a: 'פיתוח מוצרים שלמים — אתרים, אפליקציות לאייפון ולאנדרואיד, משחקים ומודלים של למידת מכונה — עם קוד שהוא כותב בעצמו ושימוש מושכל בכלי AI.',
+  },
+  {
+    q: 'באילו שפות תכנות רוני מיכאלי כותב?',
+    a: 'Python, TypeScript, JavaScript, C#, Java, C/C++, Kotlin, Dart ו-SQL, עם React, React Native, Flutter, Astro, Node.js, Firebase, PyTorch ו-TensorFlow.',
+  },
+  {
+    q: 'האם רוני מיכאלי זמין לעבודה?',
+    a: 'כן. רוני זמין למשרת פיתוח מלאה — Full-Stack, Backend או AI — ואפשר לפנות אליו בוואטסאפ, במייל או בלינקדאין.',
+  },
+  {
+    q: 'האם רוני מיכאלי נותן שיעורים פרטיים?',
+    a: 'כן. רוני מלמד שיעורים פרטיים במדעי המחשב ומתמטיקה לסטודנטים ולתלמידי תיכון, ומכין למבחנים באוניברסיטה ולבגרויות.',
+  },
+];
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'he',
+  mainEntity: faqHe.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+
 const profileLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
@@ -51,7 +81,7 @@ const profileLd = {
   title={`${names.he} — מפתח תוכנה ומומחה AI`}
   description={summary.he}
   type="profile"
-  jsonLd={[profileLd]}
+  jsonLd={[profileLd, faqLd]}
   alternates={{ en: '/', he: '/he/' }}
 >
   <article class="he relative overflow-hidden pt-36 pb-24" style="font-family: 'Heebo Variable', var(--font-sans)">
@@ -135,6 +165,42 @@ const profileLd = {
           ))
         }
       </ul>
+    </section>
+
+    <section class="container-x relative mt-20 grid gap-6 md:grid-cols-2" aria-labelledby="he-teaching">
+      <div class="glass rounded-3xl p-7">
+        <h2 id="he-teaching" class="text-2xl font-bold md:text-3xl" style="font-family: 'Heebo Variable', sans-serif">שיעורים פרטיים במדעי המחשב ומתמטיקה</h2>
+        <p class="mt-4 leading-relaxed text-muted">
+          מאז 2023 אני מלמד שיעורים פרטיים לסטודנטים באוניברסיטה ולתלמידי תיכון — תכנות, מבני נתונים ואלגוריתמים ועד
+          מתמטיקה ברמה אוניברסיטאית והכנה למבחנים. ההוראה לימדה אותי להסביר דברים מורכבים בפשטות, וזה מה שהופך אותי גם למפתח טוב יותר.
+        </p>
+        <a href="https://roni5604.github.io/private-lessons-site/" target="_blank" rel="noopener" class="mt-5 inline-flex text-cyan hover:underline">
+          לאתר השיעורים הפרטיים ← <span class="sr-only">(נפתח בכרטיסייה חדשה)</span>
+        </a>
+      </div>
+      <div class="glass rounded-3xl p-7">
+        <h2 class="text-2xl font-bold md:text-3xl" style="font-family: 'Heebo Variable', sans-serif">השכלה ורקע</h2>
+        <ul class="mt-4 grid gap-3 leading-relaxed text-muted">
+          <li><strong class="text-ink">B.Sc. מדעי המחשב ומתמטיקה</strong> — אוניברסיטת אריאל</li>
+          <li><strong class="text-ink">תיכון</strong> — 5 יחידות מדעי המחשב, ניהול רשתות ופיזיקה</li>
+          <li><strong class="text-ink">2017–2021</strong> — שירות צבאי כמנהל חדר מבצעים</li>
+          <li><strong class="text-ink">היום</strong> — מפתח מוצרים עם AI ומורה פרטי</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container-x relative mt-20 max-w-4xl" aria-labelledby="he-faq">
+      <h2 id="he-faq" class="text-3xl font-bold md:text-4xl" style="font-family: 'Heebo Variable', sans-serif">שאלות נפוצות</h2>
+      <div class="mt-6 divide-y divide-line border-y border-line">
+        {
+          faqHe.map((f) => (
+            <details class="group py-5">
+              <summary class="cursor-pointer list-none text-lg font-semibold text-ink [&::-webkit-details-marker]:hidden">{f.q}</summary>
+              <p class="mt-3 leading-relaxed text-muted">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
     </section>
 
     <section id="contact-he" class="container-x relative mt-20" aria-labelledby="he-contact">

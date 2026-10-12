@@ -46,3 +46,19 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing / Yandex / other IndexNow engines that pages changed (free,
+  # no account needed). Bing results also feed ChatGPT and Copilot search.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping IndexNow
+        run: |
+          sleep 30
+          URLS=$(curl -fsSL https://ronimichaeli.com/sitemap-0.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' | jq -R . | jq -sc .)
+          echo "$URLS" | jq length
+          curl -sS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"ronimichaeli.com\",\"key\":\"d9c7fad2d413dd3eaf0313bd08ceafca\",\"keyLocation\":\"https://ronimichaeli.com/d9c7fad2d413dd3eaf0313bd08ceafca.txt\",\"urlList\":$URLS}" \
+            -w '\nIndexNow HTTP %{http_code}\n'

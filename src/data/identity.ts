@@ -29,7 +29,7 @@ export const person = {
   image: `${site.url}/og.jpg`,
   description: summary.en,
   disambiguatingDescription: 'Software developer and AI specialist from Israel; B.Sc. Computer Science & Mathematics, Ariel University.',
-  jobTitle: ['Software Developer', 'AI Specialist'],
+  jobTitle: ['Software Developer', 'AI Specialist', 'Private Tutor in Computer Science and Mathematics'],
   hasOccupation: {
     '@type': 'Occupation',
     name: 'Software Developer',
@@ -72,5 +72,5 @@ export const person = {
   nationality: { '@type': 'Country', name: 'Israel' },
   address: { '@type': 'PostalAddress', addressCountry: 'IL' },
   seeks: { '@type': 'Demand', description: 'Full-time software developer role — full-stack, backend or AI-focused.' },
-  sameAs: [site.linkedin, site.github],
+  sameAs: [site.linkedin, site.github, 'https://roni5604.github.io/private-lessons-site/'],
 };
