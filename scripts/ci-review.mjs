@@ -178,6 +178,12 @@ for (const [slug, url] of Object.entries(live)) {
     try {
       const resp = await page.goto(url, { waitUntil: 'load', timeout: 60000 });
       await page.waitForTimeout(slug === 'wordbox' || slug === 'card-games' || slug === 'yehudit-michaeli' ? 9000 : 2500);
+      // Dismiss cookie banners so the screenshot shows the actual site.
+      const dismiss = page.getByRole('button', { name: /^(דחייה|Decline|Reject( all)?)$/ }).first();
+      if (await dismiss.count()) {
+        await dismiss.click().catch(() => {});
+        await page.waitForTimeout(800);
+      }
       await page.screenshot({ path: join(out, 'live', `${slug}-${v.name}.png`) });
       summary.live[`${slug}-${v.name}`] = resp ? resp.status() : 'no response';
     } catch (e) {
