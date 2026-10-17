@@ -1,0 +1,61 @@
+---
+title: Le-Olam · Digital Memorial
+tagline: A living digital memorial for one person — story, voice and light, opened from a single link.
+summary: A bilingual (Hebrew/English) platform where families build a memorial page — life story, photos, videos, songs, letters and candles — that visitors open from a link or a QR code on the headstone, with no account. Includes an in-browser animated figure built from one photo, an AI talking-figure studio, annual plans with online payment, and a full family editor.
+year: '2026'
+order: 1.5
+category: Web & Apps
+featured: true
+role: Founder & solo developer — product, design, code, payments and legal
+languages: [TypeScript]
+stack: [Next.js, React, Firebase Auth, Cloud Firestore, Firebase Storage, Cloud Functions, Vercel, Three.js, MediaPipe, Transformers.js, HeyGen API, PayPlus, Playwright, Vitest]
+highlights:
+  - Visitors open a memorial straight from a link or a printed QR code — no sign-up, no app
+  - Nine content rooms (story, life journey, photos, videos, songs, letters, candles, recordings…) on a split screen beside the figure
+  - An animated "living figure" generated in the browser from a single photo — face landmarks, person segmentation and a depth model, rendered in WebGL
+  - Optional AI talking figure (HeyGen) that says only words the family wrote and approved; each clip is produced once and stored
+  - Family editor with uploads, roles and permissions, recycle bin, drag-and-drop ordering, sharing and QR designs
+  - Three annual plans with secure online checkout (credit card, Bit, Apple Pay, Google Pay) verified server-side by signed callbacks
+  - Hebrew right-to-left first, English under /en, with privacy, terms, cookies and accessibility pages
+cover: ../../assets/projects/le-olam/cover.jpg
+coverAlt: The Le-Olam share card — an elderly man's portrait inside an arch beside the flame-in-an-arch logo and the Hebrew line "The story continues here"
+gallery:
+  - src: ../../assets/projects/le-olam/icon.jpg
+    alt: The Le-Olam app icon — a hand-drawn arch with a growing stem that ends in a golden flame-shaped leaf
+    caption: The app icon — an arch, a candle flame and a living plant in one mark.
+live: https://le-olam.com/
+links:
+  - label: Sample memorial
+    url: https://le-olam.com/memorial/israel-israeli
+accent: '#e0b25c'
+---
+
+## The idea
+
+A headstone holds a name and two dates. **Le-Olam** (Hebrew for "forever") holds the rest: the story, the voice, the photos, the songs and the people who still remember. A family builds the memorial once, and anyone who receives the link — or scans the QR code on the stone — walks straight into it, without an account or an app.
+
+Memorial addresses never change, because printed QR codes point at them.
+
+## What a visitor meets
+
+The screen is split in two. On one side, the figure of the person; on the other, the rooms of their life — story, life journey, photos, videos, songs, letters, candles and recordings. Choosing a room swaps that half of the screen for its content. Guests can light a candle or leave a letter, and every memorial has its own QR code to download, print or share on WhatsApp.
+
+[Israel Israeli's sample memorial](https://le-olam.com/memorial/israel-israeli) is open to everyone.
+
+## A figure from one photo
+
+The "living figure" is built entirely **in the browser**, on the family's own device. From a single photo the editor finds the face landmarks and segments the person with MediaPipe, estimates a depth surface with a small depth model running on Transformers.js, paints the person out of the background and builds a triangulated mesh. The figure is then animated and rendered in WebGL with Three.js — breathing, blinking and moving its lips with the recorded voice.
+
+For families who want more, an **AI talking-figure studio** (HeyGen) produces a realistic figure that greets visitors, guides them through each room and tells chapters of the story. It says only words the family wrote and approved, and every clip is generated once and stored, so a visit never costs anything extra.
+
+## Built as a real product
+
+- **Next.js on Vercel** with **Firebase** — authentication (Google or email), Firestore, Storage, security rules and a scheduled cleanup function.
+- **Three annual plans** — Memory, Presence and Encounter — with online checkout through an Israeli payment provider. A plan is granted only by the server, after a signed callback for the exact order amount; upgrades charge only the difference.
+- **A full family editor** — uploads with previews and cropping, roles and invitations, a recycle bin, drag-and-drop room ordering, QR designs and an engraved plaque.
+- **Hebrew right-to-left first**, English under `/en`, and legal pages written for Israeli privacy, consumer-protection and accessibility rules.
+- **Tested end to end** — unit tests with Vitest, Firestore-rules tests against the emulators, and Playwright journeys with an axe-core accessibility scan.
+
+## Code first, AI-accelerated
+
+I designed the product and wrote its architecture and core logic myself, and worked with AI coding agents to move faster — with typed domain models, tests and CI keeping every change honest.
