@@ -650,6 +650,34 @@ function setupSectionParallax() {
   }
 }
 
+/* ---------------- Part engineer, part machine ----------------
+ * The WebGL portrait (three.js) is fetched only when its section is
+ * within a screen of the viewport, so it costs nothing on first load. */
+function setupHumanMachine() {
+  const root = document.querySelector<HTMLElement>('[data-human-machine]');
+  if (!root) return;
+  let stop: Cleanup | null = null;
+  let gone = false;
+  const io = new IntersectionObserver(
+    ([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      import('./human-machine')
+        .then(({ mountHumanMachine }) => {
+          if (!gone) stop = mountHumanMachine(root, { reduced: reduced() });
+        })
+        .catch(() => root.classList.add('hm-nogl'));
+    },
+    { rootMargin: '100% 0px' },
+  );
+  io.observe(root);
+  onCleanup(() => {
+    gone = true;
+    io.disconnect();
+    stop?.();
+  });
+}
+
 /* ---------------- Lifecycle ---------------- */
 function init() {
   applyHtmlClasses();
@@ -666,6 +694,7 @@ function init() {
   setupHeader();
   setupMobileMenu();
   setupHero();
+  setupHumanMachine();
   setupHorizontalGallery();
   setupTimeline();
   setupFilters();

@@ -1,0 +1,168 @@
+---
+/**
+ * "Part engineer. Part machine." — a pinned WebGL portrait between Work and Contact.
+ * The engine lives in src/scripts/human-machine.ts and is loaded only when the section nears the screen.
+ * Without WebGL (or before it loads) the portrait shows as a still: human on the left, machine on the right.
+ */
+interface Props {
+  lang?: 'en' | 'he';
+  class?: string;
+}
+const { lang = 'en', class: className } = Astro.props;
+const t =
+  lang === 'he'
+    ? {
+        left: 'חצי|מהנדס.',
+        right: 'חצי|מכונה.',
+        title: 'חצי מהנדס, חצי מכונה',
+        desc: 'דיוקן אינטראקטיבי של רוני מיכאלי: תזוזת העכבר חושפת גרסה רובוטית מתחת לפנים, וגלילה הופכת אותו כולו למכונה.',
+        hint: ['זוזו כדי לחשוף', 'גללו כדי להעמיק'],
+        font: '"Heebo Variable", "Space Grotesk Variable", sans-serif',
+      }
+    : {
+        left: 'PART|ENGINEER.',
+        right: 'PART|MACHINE.',
+        title: 'Part engineer. Part machine.',
+        desc: 'An interactive portrait of Roni Michaeli: moving the pointer reveals a machine version beneath his face, and scrolling turns him fully into the machine.',
+        hint: ['Move to reveal', 'Scroll to go deeper'],
+        font: '"Space Grotesk Variable", "Inter Variable", sans-serif',
+      };
+---
+
+<section
+  id="human-machine"
+  class:list={['hm relative', className]}
+  aria-labelledby="hm-title"
+  data-human-machine
+  data-left={t.left}
+  data-right={t.right}
+  data-font={t.font}
+  data-assets="/human-machine"
+  dir={lang === 'he' ? 'rtl' : 'ltr'}
+>
+  <h2 id="hm-title" class="sr-only">{t.title}</h2>
+  <p class="sr-only">{t.desc}</p>
+  <div class="hm-stage" data-hm-stage>
+    <!-- Still fallback, shown until WebGL draws (and kept if it can't). -->
+    <div class="hm-still" aria-hidden="true">
+      <img src="/human-machine/face.webp" alt="" width="900" height="1117" loading="lazy" decoding="async" />
+      <img src="/human-machine/machine.webp" alt="" width="900" height="1117" loading="lazy" decoding="async" class="hm-still-machine" />
+    </div>
+    <canvas class="hm-gl" data-hm-gl aria-hidden="true"></canvas>
+    <canvas class="hm-hud" data-hm-hud aria-hidden="true"></canvas>
+    <div class="hm-edge hm-edge-top" aria-hidden="true"></div>
+    <div class="hm-edge hm-edge-bottom" aria-hidden="true"></div>
+    <p class="hm-readout" data-hm-readout aria-hidden="true" dir="ltr">Face mesh · 76 pts<br />Yaw 0.0° · Pitch 0.0° · Tracking</p>
+    <p class="hm-hint" data-hm-hint aria-hidden="true">{t.hint[0]}<br />{t.hint[1]}</p>
+  </div>
+</section>
+
+<style>
+  .hm {
+    /* The scroll runway: the stage stays pinned while the beats play. The next section is pulled up
+       over the last screen, so it rises over the code field while the machine burns away (no empty screen). */
+    height: 380vh;
+    margin-bottom: -100vh;
+    background: var(--color-bg);
+  }
+  /* Whatever follows sits above the pinned stage and lets the field show through. */
+  .hm + :global(*) {
+    position: relative;
+    z-index: 1;
+  }
+  .hm-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .hm-gl,
+  .hm-hud {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hm-hud {
+    pointer-events: none;
+  }
+  .hm-gl {
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-out-expo);
+  }
+  :global(.hm-ready) .hm-gl {
+    opacity: 1;
+  }
+  .hm-still {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: end center;
+    background: radial-gradient(ellipse 45% 55% at 50% 45%, rgb(107 43 13 / 0.45), transparent 70%), var(--color-bg);
+  }
+  .hm-still img {
+    grid-area: 1 / 1;
+    height: min(118svh, 150vw);
+    width: auto;
+    max-width: none;
+    transform: translateY(18%);
+  }
+  .hm-still-machine {
+    clip-path: inset(0 0 0 50%);
+  }
+  :global(.hm-ready) .hm-still {
+    visibility: hidden;
+  }
+  /* Blend the stage's top and bottom into the page while it slides in and out. */
+  .hm-edge {
+    position: absolute;
+    inset-inline: 0;
+    height: 96px;
+    pointer-events: none;
+  }
+  .hm-edge-top {
+    top: 0;
+    background: linear-gradient(var(--color-bg), transparent);
+  }
+  .hm-edge-bottom {
+    bottom: 0;
+    background: linear-gradient(transparent, var(--color-bg));
+  }
+  .hm-readout,
+  .hm-hint {
+    position: absolute;
+    bottom: clamp(18px, 3.5vh, 36px);
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(231 237 247 / 0.62);
+    pointer-events: none;
+    transition: opacity 0.5s;
+    z-index: 2;
+  }
+  .hm-readout {
+    left: clamp(16px, 2.4vw, 32px);
+    text-align: left;
+  }
+  .hm-hint {
+    right: clamp(16px, 2.4vw, 32px);
+    text-align: right;
+  }
+  @media (max-width: 760px) {
+    .hm {
+      height: 330vh;
+    }
+    .hm-readout,
+    .hm-hint {
+      font-size: 9.5px;
+    }
+  }
+</style>
