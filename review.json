@@ -1,0 +1,112 @@
+{
+  "pages": {
+    "/": {
+      "violations": []
+    },
+    "/404.html": {
+      "violations": []
+    },
+    "/accessibility": {
+      "violations": []
+    },
+    "/googled0819e80cc36acc7.html": {
+      "violations": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "help": "Documents must have <title> element to aid in navigation",
+          "nodes": [
+            {
+              "target": "html",
+              "summary": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "help": "<html> element must have a lang attribute",
+          "nodes": [
+            {
+              "target": "html",
+              "summary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      ]
+    },
+    "/he": {
+      "violations": []
+    },
+    "/privacy": {
+      "violations": []
+    },
+    "/projects": {
+      "violations": []
+    },
+    "/projects/aruco-detection": {
+      "violations": []
+    },
+    "/projects/blockchain-voting": {
+      "violations": []
+    },
+    "/projects/card-games": {
+      "violations": []
+    },
+    "/projects/drone-navigation": {
+      "violations": []
+    },
+    "/projects/expression-benchmark": {
+      "violations": []
+    },
+    "/projects/face-recognition": {
+      "violations": []
+    },
+    "/projects/gnss-analysis": {
+      "violations": []
+    },
+    "/projects/hebrew-words-db": {
+      "violations": []
+    },
+    "/projects/iss-tracker": {
+      "violations": []
+    },
+    "/projects/le-olam": {
+      "violations": []
+    },
+    "/projects/lunar-landing": {
+      "violations": []
+    },
+    "/projects/matan-refaely": {
+      "violations": []
+    },
+    "/projects/meat-and-cheese": {
+      "violations": []
+    },
+    "/projects/wordbox": {
+      "violations": []
+    },
+    "/projects/yehudit-michaeli": {
+      "violations": []
+    },
+    "/projects/yoga-time": {
+      "violations": []
+    }
+  },
+  "brokenLinks": [],
+  "consoleErrors": [],
+  "live": {
+    "matan-refaely-desktop": 200,
+    "matan-refaely-mobile": 200,
+    "meat-and-cheese-desktop": 200,
+    "meat-and-cheese-mobile": 200,
+    "wordbox-desktop": 200,
+    "wordbox-mobile": 200,
+    "card-games-desktop": 200,
+    "card-games-mobile": 200,
+    "yehudit-michaeli-desktop": 200,
+    "yehudit-michaeli-mobile": 200
+  },
+  "navigationTest": "http://localhost:4321/",
+  "totalViolations": 2
+}
